@@ -6,9 +6,9 @@ import App from "./App";
 
 ReactDOM.render(
   <Auth0Provider
-    domain="YOUR_DOMAIN"
-    clientId="YOUR_CLIENT_ID"
-    redirectUri={window.location.origin}
+    domain={process.env.REACT_APP_DOMAIN}
+    clientId={process.env.REACT_APP_CLIENTID}
+    redirectUri={process.env.REACT_APP_URI}
   >
     <App />
   </Auth0Provider>,
