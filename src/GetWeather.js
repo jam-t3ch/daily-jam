@@ -24,19 +24,18 @@ class GetWeather extends React.Component {
 
   // updates local state to city being typed
   handleCityInput = (e) => {
+    // console.log(this.state.city);
     this.setState({
       city: e.target.value
     })
-    console.log(this.state.city);
+
   }
 
   // Called on submit this function calls handleCityWeather function on Main.js and passes state in local city to it as input for API call
   handleCitySubmit = (e) => {
     e.preventDefault();
-    console.log('handle city submit is running', this.state.city);
-    this.props.handleCityWeather({
-      city: this.state.city
-    })
+    // console.log('handle city submit is running', this.state.city);
+    this.props.handleCityWeather(this.state.city);
     this.closeCityModal();
   }
 
@@ -61,23 +60,25 @@ class GetWeather extends React.Component {
             </Modal.Body>
 
             <Modal.Footer>
-              <Form >
+              <Form   onSubmit={this.handleCitySubmit}>
                 {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
                 <Form.Group className="mb-3" controlId="formBasicCity">
                   <Form.Label>Enter Your City:</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Where we jammin'?"
+                    onInput={this.handleCityInput}
                   />
                   <Form.Text className="text-muted"
-                  onInput={this.handleCityInput}>
+                  >
                     Please share your home city or some other location you're trying to jam at!
                   </Form.Text>
                 </Form.Group>
 
                 <Button
                   variant="primary"
-                  onSubmit={this.handleCitySubmit}>
+                  type='submit'
+                >
                   Save City
                 </Button>
 
