@@ -1,7 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import NotesForm from './NotesForm';
+import NotesDisplay from './NotesDisplay';
 import './App.css';
 import { withAuth0 } from '@auth0/auth0-react';
 

@@ -27,18 +27,16 @@ class NotesForm extends React.Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Card style={{ width: '18rem' }}>
-          <Card.Header>Add a note to yourself.</Card.Header>
+        <Card>
+          <Card.Header>Don't spread yourself thin. Add a note to yourself to stay organized.</Card.Header>
           <Card.Body>
             <Form.Group>
-              <Form.Label>Note:</Form.Label>
-              <Form.Control type="text" placeholder="ex. Pick up kids from school"  name="name" onChange={this.handleChange} />
+              <Form.Control type="text" placeholder="Note"  name="name" onChange={this.handleChange} />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Details:</Form.Label>
-              <Form.Control type="text" placeholder="3pm, 22 W Highland Dr" name="description" onChange={this.handleChange} />
+              <Form.Control type="text" placeholder="Details" name="description" onChange={this.handleChange} />
             </Form.Group>
-            <Button variant="dark" type="submit">Add Item</Button>
+            <Button variant="outline-primary" type="submit">Add Note</Button>
           </Card.Body>
         </Card>
       </Form>
