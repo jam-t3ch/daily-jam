@@ -11,21 +11,24 @@ class Main extends React.Component {
     super(props)
     this.state = {
       email: null,
-      location: "seattle",
+      location: "Seattle",
       showWeatherCarousel: false,
       weather: null
     }
   }
 
-  // Event listener for this is in GetWeather and parameter value should be user input of city
+  // GET WEATHER FROM SERVER Event listener for this is in GetWeather and parameter value should be user input of city
   handleCityWeather = async (city) => {
     try {
-      console.log(city);
-      let userWeather = await axios.get(`${SERVER}/weather`, city);
+      console.log('fn on Main sending this to server/weatherCity:', city);
+      let userWeather = await axios.get(`${SERVER}/weatherCity`, city);
       let receivedWeather = userWeather.data;
       this.setState({
-        weather: receivedWeather
+        weather: receivedWeather,
+        location: city
       })
+      this.props.locationObtained(this.state.location);
+      this.props.weatherObtained(this.state.weather);
 
     } catch {
       console.log("didn't work");
@@ -35,10 +38,12 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <Col xs={1} sm={2} md={3} lg={4} xl={4}></Col>
+        <Col xs={2} sm={2} md={3} lg={4} xl={4}></Col>
 
         <GetWeather
           handleCityWeather={this.handleCityWeather}
+          currentLocation={this.state.location}
+          weather={this.state.weather}
         />
 
       </>

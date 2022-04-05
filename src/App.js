@@ -16,7 +16,8 @@ class App extends React.Component {
     this.state = {
       email: null,
       location: "seattle",
-      notes: []
+      notes: [],
+      weather: null
     }
   }
 
@@ -39,26 +40,50 @@ class App extends React.Component {
       this.setState({
         notes: updatedNotes
       });
-    } catch(error) {
+    } catch (error) {
       console.log('There is an error')
     }
   }
 
   async componentDidMount() {
-    await this.getNotes();
+    // await this.getNotes();
+  }
+
+
+  // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
+  locationObtained = (locationEntered) => {
+    this.setState({ location: locationEntered })
+  }
+  weatherObtained = (weatherRetrieved) => {
+    this.setState({ weather: weatherRetrieved })
   }
 
   render() {
+    // console.log('App.js location state', this.state.location);
+    // console.log('App.js weather state', this.state.weather);
+
     return (
       <>
 
-        <Header />
+        <Header
+          weather={this.state.weather}
+          location={this.state.location}
+        />
+
         <NotesForm
-          handleAddNote={this.addNote}/>
+          handleAddNote={this.addNote}
+        />
+
         <NotesDisplay
           notesList={this.state.notes}
-          deleteNote={this.deleteNote}/>
-        <Main />
+          deleteNote={this.deleteNote}
+        />
+
+        <Main
+          locationObtained={this.locationObtained}
+          weatherObtained={this.weatherObtained}
+        />
+
         <Footer />
 
       </>

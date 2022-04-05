@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Modal, Card, Form } from 'react-bootstrap';
+import './GetWeather.css';
+import WeatherList from './WeatherList';
 
 class GetWeather extends React.Component {
   constructor(props) {
@@ -36,7 +38,7 @@ class GetWeather extends React.Component {
     e.preventDefault();
     // console.log('handle city submit is running', this.state.city);
     this.props.handleCityWeather(this.state.city);
-    this.closeCityModal();
+    // this.closeCityModal();
   }
 
   render() {
@@ -44,9 +46,9 @@ class GetWeather extends React.Component {
       <>
         {this.state.showCityModal
           ?
-          <Modal.Dialog style={{ width: '18rem' }}>
+          <Modal.Dialog style={{ width: '100%' }}>
             <Modal.Header>
-              <Modal.Title>Weather Jam</Modal.Title>
+              <Modal.Title>{this.props.currentLocation} Local Weather</Modal.Title>
 
               <Button
                 variant="danger"
@@ -56,13 +58,20 @@ class GetWeather extends React.Component {
             </Modal.Header>
 
             <Modal.Body>
-              <h1>Seattle!!!</h1>
+              {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
+              {this.props.weather
+                &&
+                <WeatherList
+                  weather={this.props.weather}
+                />
+              }
             </Modal.Body>
 
+
             <Modal.Footer>
-              <Form   onSubmit={this.handleCitySubmit}>
+              <Form onSubmit={this.handleCitySubmit}>
                 {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
-                <Form.Group className="mb-3" controlId="formBasicCity">
+                <Form.Group className="" controlId="formBasicCity">
                   <Form.Label>Enter Your City:</Form.Label>
                   <Form.Control
                     type="text"
@@ -79,7 +88,7 @@ class GetWeather extends React.Component {
                   variant="primary"
                   type='submit'
                 >
-                  Save City
+                  Go
                 </Button>
 
               </Form>
@@ -88,8 +97,15 @@ class GetWeather extends React.Component {
 
           :
 
-          <Card style={{ width: '18rem' }}>
-            <Button onClick={this.openCityModal}>Click to open</Button>
+          <Card>
+            <Button
+              onClick={this.openCityModal}
+              className="feature-card"
+            >
+              <p>Find</p>
+              <p>Your</p>
+              <p>Weather!</p>
+            </Button>
           </Card>
         }
       </>
