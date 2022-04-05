@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import './App.css';
+import { withAuth0 } from '@auth0/auth0-react';
 
 const API_SERVER = process.env.REACT_APP_SERVER;
 
@@ -62,5 +63,4 @@ class App extends React.Component {
   }
 }
 
-
-export default App;
+export default withAuth0(App);
