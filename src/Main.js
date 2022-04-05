@@ -18,11 +18,13 @@ class Main extends React.Component {
   }
 
   // Event listener for this is in GetWeather and parameter value should be user input of city
-  handleCityWeather = async (e) => {
+  handleCityWeather = async (city) => {
     try {
-      let userWeather = await axios.get(`${SERVER}/weather`);
+      console.log(city);
+      let userWeather = await axios.get(`${SERVER}/weather`, city);
+      let receivedWeather = userWeather.data;
       this.setState({
-        weather: userWeather.data
+        weather: receivedWeather
       })
 
     } catch {
