@@ -29,7 +29,7 @@ class AboutUs extends React.Component {
         <Carousel.Item>
           <div>
             <h2>Tai Egashira</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</p>
           </div>
         </Carousel.Item>
 </Carousel>
