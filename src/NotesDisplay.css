@@ -1,12 +1,16 @@
 ul {
   background-image: url(../public/images/pink-notepad.png);
-  background-color: pink;
   height:60px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  list-style-image: url(../public/list-item.png);
 }
 
 li {
-  margin-left: 80px;
+  margin-left: 6vw;
+}
+
+.delete-button {
+
 }

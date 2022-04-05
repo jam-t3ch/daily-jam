@@ -5,24 +5,28 @@ import './NotesDisplay.css';
 class NotesDisplay extends React.Component {
 
   render() {
+    let eachUserNote = this.props.notes.map(note => {
 
+      return (
+        <UserNote
+        key={note._id}
+        note={note} 
+        deleteNote={this.props.deleteNote}
+        putNote={this.props.putNote}
+        />
+      )
+    })
+    
+    console.log(this.props.notes);
     return (
-
-      <section>
+      
+      <>
+      {this.props.notes ? (
         <ul>
-          <li>Pick up kids from school - 22 W. Hawthorne Ave</li>
-          <li>MarioKart Tournament - Saturday @ 8pm</li>
-        {
-          this.props.notesList.map((note) =>
-            <UserNote
-            key={note._id}
-            noteData={note} 
-            deleteNote={this.props.deleteNote}
-            />
-          )
-        }
+          {eachUserNote}
         </ul>
-      </section>
+      ) : ('')}
+      </>
     );
   }
 }

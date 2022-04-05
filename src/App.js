@@ -21,20 +21,36 @@ class App extends React.Component {
     }
   }
 
-  addNote = async (note) => {
-    await axios.post(`${API_SERVER}/notes`, note);
-    this.getNotes();
+  postNote = async (newNote) => {
+    try {
+      let url = `${API_SERVER}/notes`
+      let createdNote = await axios.post(url, newNote);
+      console.log(createdNote.data);
+      this.setState({
+        notes: [...this.state.notes, createdNote.data]
+      })
+    } catch(error) {
+      console.log('There is an error')
+    }
   }
 
   getNotes = async () => {
-    const response = await axios.get(`${API_SERVER}/notes`);
-    const notes = response.data;
-    this.setState({ notes });
+    try {
+      let results = await axios.get(`${API_SERVER}/notes`);
+      console.log(results);
+      if (Array.isArray(results)) {
+      this.setState({
+        notes: results.data
+      })
+    }
+    } catch(error) {
+      console.log('There is an error')
+    }
   }
 
   deleteNote = async (id) => {
     try {
-      let url = `${API_SERVER}/notes/${id}`
+      let url = `${API_SERVER}/notes/${id}`;
       await axios.delete(url);
       let updatedNotes = this.state.notes.filter(note => note._id !== id);
       this.setState({
@@ -45,9 +61,26 @@ class App extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    // await this.getNotes();
+
+  putNote = async (noteToUpdate) => {
+    try {
+      let url = `${API_SERVER}/notes/${noteToUpdate._id}`;
+      let updatedNote = await axios.put(url, noteToUpdate);
+      let updatedNoteData = this.state.notes.map(currentNote => {
+        return currentNote._id === noteToUpdate._id
+        ? updatedNote.data
+        : currentNote;
+      });
+      this.setState({notes: updatedNoteData});
+    } catch(error) {
+      console.log('There is an error');
+    }
   }
+
+
+
+  componentDidMount() {
+    this.getNotes();
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
@@ -56,6 +89,7 @@ class App extends React.Component {
   }
   weatherObtained = (weatherRetrieved) => {
     this.setState({ weather: weatherRetrieved })
+
   }
 
   render() {
@@ -71,18 +105,18 @@ class App extends React.Component {
         />
 
         <NotesForm
-          handleAddNote={this.addNote}
-        />
-
+          postNote={this.postNote}/>
+            
         <NotesDisplay
-          notesList={this.state.notes}
+          notes={this.state.notes}
           deleteNote={this.deleteNote}
-        />
-
+          putNote={this.putNote}/>
+       
         <Main
           locationObtained={this.locationObtained}
           weatherObtained={this.weatherObtained}
         />
+
 
         <Footer />
 
