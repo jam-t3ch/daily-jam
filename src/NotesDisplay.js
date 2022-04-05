@@ -1,5 +1,6 @@
 import React from 'react';
 import UserNote from './UserNote';
+import './NotesDisplay.css';
 
 class NotesDisplay extends React.Component {
 
@@ -9,13 +10,17 @@ class NotesDisplay extends React.Component {
 
       <section>
         <ul>
+          <li>Pick up kids from school - 22 W. Hawthorne Ave</li>
+          <li>MarioKart Tournament - Saturday @ 8pm</li>
         {
-          this.props.itemsList.map((note, idx) =>
-                <UserNote key={note._id} noteData={note} 
-                deleteNote={this.props.deleteNote}
-                />
-              )
-            }
+          this.props.notesList.map((note) =>
+            <UserNote
+            key={note._id}
+            noteData={note} 
+            deleteNote={this.props.deleteNote}
+            />
+          )
+        }
         </ul>
       </section>
     );
