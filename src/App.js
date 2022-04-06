@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {useRef, useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
@@ -12,9 +12,9 @@ const API_SERVER = process.env.REACT_APP_SERVER;
 
 const App = () => {
   const hasBeenFetched = useRef(false)
-  const [email, setEmail] = useState(null)
+  // const [email, setEmail] = useState(null)
   const [notes, setNotes] = useState([])
-  const [location, setLocation] = useState('Seattle')
+  const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
   const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
 
@@ -54,7 +54,7 @@ const App = () => {
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
-      console.log(user.email)
+      // console.log(user.email)
       try {
         const config = {
           method: 'get',
@@ -63,13 +63,13 @@ const App = () => {
           headers: { "Authorization": `Bearer ${jwt}` },
           params: { email: user.email }
         };
-        console.log(config);
+        // console.log(config);
         let results = await axios(config);
-        console.log(results);
+        // console.log(results);
         if (results.data && !hasBeenFetched.current) {
           setNotes(results.data)
           hasBeenFetched.current = true;
-          console.log(notes)
+          // console.log(notes)
         }
       } catch (error) {
         console.log('There is an error')
