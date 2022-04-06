@@ -1,1 +1,64 @@
+.app-card {
+  background-image: url(../public/images/blackberries.jpg);
+  height:20vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+}
 
+.app-card:hover {
+  cursor:pointer;
+}
+
+.app-card-body {
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  border-radius: 15px;
+  font-size:x-large
+}
+
+.modal-body {
+  background-image: url(../public/images/blackberries.jpg);
+  height:100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.game-body {
+  background-color: white;
+  border-radius: 30px;
+  width:fit-content;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 30px;
+}
+
+.hidden-l {
+  color:white;
+}
+
+.blinking-cursor {
+  height: 30px;
+  margin-bottom: -4px;
+  width: 3px;
+  background: purple;
+  opacity: 0;
+  display: inline-block;
+  animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

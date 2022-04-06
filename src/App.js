@@ -74,7 +74,9 @@ const App = () => {
       console.log('There is an error');
     }
   }
+
 getNotes();
+
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
