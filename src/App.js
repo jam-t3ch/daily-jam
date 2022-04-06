@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {useRef, useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
@@ -12,7 +12,7 @@ const API_SERVER = process.env.REACT_APP_SERVER;
 
 const App = () => {
   const hasBeenFetched = useRef(false)
-  const [email, setEmail] = useState(null)
+  // const [email, setEmail] = useState(null)
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
