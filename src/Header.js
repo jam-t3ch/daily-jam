@@ -1,23 +1,29 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import WeatherMarquee from './WeatherMarquee';
+import Profile from './Profile'
+import LoginButton from './LoginButton'
+import LogoutButton from './LogoutButton'
+import { withAuth0, useAuth0 } from '@auth0/auth0-react';
 
 
-class Header extends React.Component {
-
-  render() {
+const Header = (props) => {
+  console.log(props)
+  const { isAuthenticated } = useAuth0();
     return (
       <>
 
         <header>
+          <Profile/>
           Daily Jam
+          {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
         </header>
 
         {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
-        {this.props.weather
+        {props.weather
           ?
           <WeatherMarquee
-            weather={this.props.weather}
+            weather={props.weather}
           />
           :
           <Card>Empty weather marquee. no weather data yet.</Card>
@@ -26,6 +32,6 @@ class Header extends React.Component {
       </>
     );
   }
-}
 
-export default Header;
+
+export default withAuth0(Header);
