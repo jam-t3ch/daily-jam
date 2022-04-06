@@ -8,7 +8,7 @@ const SERVER = process.env.REACT_APP_SERVER
 
 const Main = (props) => {
   const [email, setEmail] = useState(null)
-  const [location, setLocation] = useState('Seattle')
+  const [location, setLocation] = useState(null)
   const [showWeatherCarousel, setCarousel] = useState(false)
   const [weather, setWeather] = useState(null)
   const [showGameModal, setGameModal] = useState(false)
@@ -17,10 +17,10 @@ const Main = (props) => {
   const handleCityWeather = async (city) => {
     try {
       console.log('fn on Main sending this to server/weatherCity:', city)
-      let userWeather = await axios.get(`${SERVER}/weatherCity`, city)
+      let userWeather = await axios.get(`${SERVER}/weatherCity?cityName=${city}`)
       let receivedWeather = userWeather.data
-      setWeather([receivedWeather.data])
-      setLocation(city)
+      setWeather(receivedWeather);
+      setLocation(city);
       props.locationObtained(location)
       props.weatherObtained(weather)
     } catch {
@@ -37,7 +37,7 @@ const Main = (props) => {
   return (
     <>
       <GetWeather
-        handleCityWeather={()=>handleCityWeather()}
+        handleCityWeather={(something)=>handleCityWeather(something)}
         currentLocation={location}
         weather={weather}
       />
