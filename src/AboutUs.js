@@ -3,8 +3,8 @@ import {Carousel} from 'react-bootstrap';
 
 
 
-class AboutUs extends React.Component {
-  render() {
+const AboutUs = (props) => {
+
     return (
       <>
       <Carousel fade>
@@ -36,6 +36,5 @@ class AboutUs extends React.Component {
       </>
     )
   }
-}
 
 export default AboutUs;

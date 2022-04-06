@@ -4,8 +4,8 @@ import {Accordion} from 'react-bootstrap';
 
 
 
-class About extends React.Component {
-  render() {
+const About = (props) => {
+
     return (
       <>
 <Accordion>
@@ -31,6 +31,6 @@ class About extends React.Component {
       </>
     )
   }
-}
+
 
 export default About;
