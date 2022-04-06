@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Card, Modal } from 'react-bootstrap';
 import GetWeather from './GetWeather';
+import GameModal from './GameModal';
 
 const SERVER = process.env.REACT_APP_SERVER;
 
@@ -13,7 +14,8 @@ class Main extends React.Component {
       email: null,
       location: "Seattle",
       showWeatherCarousel: false,
-      weather: null
+      weather: null,
+      showGameModal: false
     }
   }
 
@@ -35,16 +37,53 @@ class Main extends React.Component {
     }
   }
 
+  gameModal = () => {
+    this.setState({
+      showGameModal: true
+    })
+  }
+
+  onHide = () => {
+    this.setState({
+      showGameModal: false
+    })
+  }
+
   render() {
     return (
       <>
-        <Col xs={2} sm={2} md={3} lg={4} xl={4}></Col>
 
         <GetWeather
           handleCityWeather={this.handleCityWeather}
           currentLocation={this.state.location}
           weather={this.state.weather}
         />
+
+        <Col
+        className="app-column"
+        xs={2} sm={2} md={3} lg={4} xl={4}>
+          <Card
+          className="app-card"
+          style={{ width: '18rem' }}
+          onClick={() => this.gameModal()}>
+            <Card.Body
+            className="app-card-body">
+              Word Jam
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Modal
+          fullscreen={true}
+          className="game-modal"
+          show={this.state.showGameModal}
+          onHide={this.onHide}>
+          <Modal.Header closeButton>WORD JAM</Modal.Header>
+          <Modal.Body
+            className="modal-body">
+            <GameModal/>
+          </Modal.Body>
+        </Modal>
 
       </>
     );

@@ -81,6 +81,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getNotes();
+  }
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
