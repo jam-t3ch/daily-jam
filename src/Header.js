@@ -5,6 +5,7 @@ import Profile from './Profile'
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
+import './Header.css'
 
 
 const Header = (props) => {
