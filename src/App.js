@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
@@ -15,40 +15,67 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState('Seattle')
   const [weather, setWeather] = useState(null)
-  const {user, isAuthenticated, getIdTokenClaims } = useAuth0()
-  
-  
-  getIdTokenClaims().then(async (res) => {
-  let jwt = res.__raw
-  console.log(jwt)
-  axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
-})
+  const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
 
 
- const postNote = async (newNote) => {
-    try {
-      let url = `${API_SERVER}/notes`
-      let createdNote = await axios.post(url, newNote);
-      console.log(createdNote.data);
-      setNotes([...notes, createdNote.data])
-    } catch(error) {
-      console.log('There is an error')
+  // let testFunction = async () => {
+  //   if (isAuthenticated) {
+  //     const res = await getIdTokenClaims();
+  //     console.log(res);
+  //     const jwt = res.__raw;
+  //     console.log(jwt);
+  //     axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
+  //   }
+  // }
+
+
+  const postNote = async (newNote) => {
+    console.log(newNote)
+    if (isAuthenticated) {
+      const res = await getIdTokenClaims();
+      const jwt = res.__raw;
+      console.log(jwt)
+      try {
+        const config = {
+          headers: { "Authorization": `Bearer ${jwt}` },
+        };
+        let url = `${API_SERVER}/notes`
+        let createdNote = await axios.post(url, newNote, config);
+        console.log(createdNote.data);
+        setNotes([...notes, createdNote.data])
+      } catch (error) {
+        console.log('There is an error')
+      }
+    }
+  }
+  
+  const getNotes = async () => {
+    if (isAuthenticated) {
+      const res = await getIdTokenClaims();
+      const jwt = res.__raw;
+      console.log(user.email)
+      try {
+        const config = {
+          method: 'get',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/notes',
+          headers: { "Authorization": `Bearer ${jwt}` },
+          params: {email: user.email}
+        };
+        console.log(config);
+        let results = await axios(config);
+        console.log(results.data);
+        if (Array.isArray(results)) {
+          setNotes([results.data])
+          console.log(notes)
+        }
+      } catch (error) {
+        console.log('There is an error')
+      }
     }
   }
 
- const getNotes = async () => {
-    try {
-      let results = await axios.get(`${API_SERVER}/notes`);
-      console.log(results);
-      if (Array.isArray(results)) {
-      setNotes(results.data)
-    }
-    } catch(error) {
-      console.log('There is an error')
-    }
-  }
-
- const deleteNote = async (id) => {
+  const deleteNote = async (id) => {
     try {
       let url = `${API_SERVER}/notes/${id}`;
       await axios.delete(url);
@@ -60,23 +87,23 @@ const App = () => {
   }
 
 
- const putNote = async (noteToUpdate) => {
+  const putNote = async (noteToUpdate) => {
     try {
       let url = `${API_SERVER}/notes/${noteToUpdate._id}`;
       let updatedNote = await axios.put(url, noteToUpdate);
       let updatedNoteData = notes.map(currentNote => {
         return currentNote._id === noteToUpdate._id
-        ? updatedNote.data
-        : currentNote;
+          ? updatedNote.data
+          : currentNote;
       });
       setNotes(updatedNoteData);
-    } catch(error) {
+    } catch (error) {
       console.log('There is an error');
     }
   }
 
-getNotes();
-
+  // testFunction();
+getNotes()
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
@@ -88,33 +115,33 @@ getNotes();
 
   }
 
-    return (
-      <>
+  return (
+    <>
 
-        <Header
-          weather={weather}
-          location={location}
-        />
+      <Header
+        weather={weather}
+        location={location}
+      />
 
-        <NotesForm
-          postNote={()=>postNote()}/>
-            
-        <NotesDisplay
-          notes={notes}
-          deleteNote={()=>deleteNote()}
-          putNote={()=>putNote()}/>
-       
-        <Main
-          locationObtained={()=>locationObtained()}
-          weatherObtained={()=>weatherObtained()}
-        />
+      <NotesForm
+        postNote={() => postNote()} />
+
+      <NotesDisplay
+        notes={notes}
+        deleteNote={() => deleteNote()}
+        putNote={() => putNote()} />
+
+      <Main
+        locationObtained={() => locationObtained()}
+        weatherObtained={() => weatherObtained()}
+      />
 
 
-        <Footer />
+      <Footer />
 
-      </>
-    )
-  }
+    </>
+  )
+}
 
 
 export default withAuth0(App);
