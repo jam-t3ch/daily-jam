@@ -18,7 +18,7 @@ class GetWeather extends React.Component {
     })
   }
 
-  closeCityModal = () => {
+  onHide = () => {
     this.setState({
       showCityModal: false
     })
@@ -46,14 +46,14 @@ class GetWeather extends React.Component {
       <>
         {this.state.showCityModal
           ?
-          <Modal.Dialog style={{ width: '100%' }}>
-            <Modal.Header>
+          <Modal.Dialog style={{ width: '100%' }} >
+            <Modal.Header closeButton onHide={this.onHide}>
               <Modal.Title>{this.props.currentLocation} Local Weather</Modal.Title>
 
-              <Button
+              {/* <Button
                 variant="danger"
                 onClick={this.closeCityModal}>
-                X </Button>
+                X </Button> */}
 
             </Modal.Header>
 
