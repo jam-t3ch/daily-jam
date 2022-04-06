@@ -90,8 +90,7 @@ const GetWeather = (props) => {
             onClick={openWeatherModal}
             className="feature-card"
           >
-            <p>Find</p>
-            <p>Your</p>
+            <p>Find Your</p>
             <p>Weather!</p>
           </Button>
         </Card>

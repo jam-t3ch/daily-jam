@@ -14,10 +14,19 @@ const Header = (props) => {
     return (
       <>
 
-        <header>
-          <Profile/>
-          Daily Jam
-          {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
+        <header className='top-nav'>
+          <h1>Daily Jam</h1>
+          <div>
+          <input id='menu-toggle' type='checkbox'/>
+          <label className='menu-button-container' for='menu-toggle'>
+            <div className='menu-button'>
+            </div>
+          </label>
+          <ul className='menu'>
+          <li>{isAuthenticated ? <LogoutButton/> : <LoginButton/>}</li>
+          <li>{isAuthenticated ? <Profile/> : <p>Please Log in</p>}</li>
+          </ul>
+          </div>
         </header>
 
         {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
@@ -27,7 +36,7 @@ const Header = (props) => {
             weather={props.weather}
           />
           :
-          <Card>Empty weather marquee. no weather data yet.</Card>
+          <Card id='weather'>No Weather Data</Card>
         }
 
       </>
