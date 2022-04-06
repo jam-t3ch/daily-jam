@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
@@ -11,6 +11,7 @@ import { withAuth0, useAuth0 } from '@auth0/auth0-react';
 const API_SERVER = process.env.REACT_APP_SERVER;
 
 const App = () => {
+  const hasBeenFetched = useRef(false)
   const [email, setEmail] = useState(null)
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState('Seattle')
@@ -48,7 +49,7 @@ const App = () => {
       }
     }
   }
-  
+
   const getNotes = async () => {
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
@@ -60,13 +61,14 @@ const App = () => {
           baseURL: process.env.REACT_APP_SERVER,
           url: '/notes',
           headers: { "Authorization": `Bearer ${jwt}` },
-          params: {email: user.email}
+          params: { email: user.email }
         };
         console.log(config);
         let results = await axios(config);
-        console.log(results.data);
-        if (Array.isArray(results)) {
-          setNotes([results.data])
+        console.log(results);
+        if (results.data && !hasBeenFetched.current) {
+          setNotes(results.data)
+          hasBeenFetched.current = true;
           console.log(notes)
         }
       } catch (error) {
@@ -88,23 +90,29 @@ const App = () => {
 
 
   const putNote = async (noteToUpdate) => {
-    try {
-      let url = `${API_SERVER}/notes/${noteToUpdate._id}`;
-      let updatedNote = await axios.put(url, noteToUpdate);
-      let updatedNoteData = notes.map(currentNote => {
-        return currentNote._id === noteToUpdate._id
-          ? updatedNote.data
-          : currentNote;
-      });
-      setNotes(updatedNoteData);
-    } catch (error) {
-      console.log('There is an error');
+    console.log(noteToUpdate);
+    if (isAuthenticated) {
+      const res = await getIdTokenClaims();
+      const jwt = res.__raw;
+      console.log(jwt)
+      try {
+        const config = {
+          headers: { "Authorization": `Bearer ${jwt}` },
+        };
+        let url = `${API_SERVER}/notes/${noteToUpdate._id}`;
+        let updatedNote = await axios.put(url, noteToUpdate, config);
+        let updatedNoteData = notes.map(currentNote => {
+          return currentNote._id === noteToUpdate._id
+            ? updatedNote.data
+            : currentNote;
+        });
+        setNotes(updatedNoteData);
+      } catch (error) {
+        console.log('There is an error');
+      }
     }
   }
-
-  // testFunction();
-getNotes()
-
+  getNotes();
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
   const locationObtained = (locationEntered) => {
@@ -124,16 +132,21 @@ getNotes()
       />
 
       <NotesForm
-        postNote={() => postNote()} />
+        postNote={(something) => postNote(something)}
+        />
 
-      <NotesDisplay
-        notes={notes}
-        deleteNote={() => deleteNote()}
-        putNote={() => putNote()} />
-
+      {isAuthenticated
+        ?
+        <NotesDisplay
+          notes={notes}
+          deleteNote={(something) => deleteNote(something)}
+          putNote={(something) => putNote(something)} />
+        :
+        null
+      }
       <Main
-        locationObtained={() => locationObtained()}
-        weatherObtained={() => weatherObtained()}
+        locationObtained={(something) => locationObtained(something)}
+        weatherObtained={(something) => weatherObtained(something)}
       />
 
 
@@ -142,6 +155,5 @@ getNotes()
     </>
   )
 }
-
 
 export default withAuth0(App);
