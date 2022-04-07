@@ -16,7 +16,6 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
-  const [noteDisplay, toggleNotes] = useState(true)
   const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
 
 
@@ -125,9 +124,7 @@ const App = () => {
   getNotes();
 
 
-  // hide and show notes from dropdown
-  const handleHideNotes = () => toggleNotes(false)
-  const handleShowNotes = () => toggleNotes(true)
+
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
@@ -146,19 +143,15 @@ const App = () => {
       <Header
         weather={weather}
         location={location}
-        handleHideNotes={(something) => handleHideNotes(something)}
-        handleShowNotes={(something) => handleShowNotes(something)}
-        noteDisplay={noteDisplay}
-
       />
-      {noteDisplay
-        &&
-        <NotesForm
-          postNote={(something) => postNote(something)}
-          user={user}
-        />
-      }
-      {isAuthenticated && noteDisplay
+
+      <NotesForm
+        postNote={(something) => postNote(something)}
+      />
+
+
+      {isAuthenticated
+
         ?
         <NotesDisplay
           notes={notes}
