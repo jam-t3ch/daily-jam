@@ -17,7 +17,7 @@ class NotesDisplay extends React.Component {
       )
     })
     
-    console.log(this.props.notes);
+    // console.log(this.props.notes);
     return (
       
       <>
