@@ -29,68 +29,74 @@ const GetWeather = (props) => {
     // this.closeCityModal();
   }
 
+  // calling Seattle weather from state on page load
+  window.onload = handleCitySubmit;
 
   return (
     <>
       <Modal show={showModal} onHide={closeWeatherModal}>
-          <Modal.Header closeButton onHide={closeWeatherModal}>
-            <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
+        <Modal.Header closeButton onHide={closeWeatherModal}>
+          <Modal.Title className="modal-title">🌪️ {props.currentLocation} Local Weather 🌪️</Modal.Title>
 
-            {/* <Button
+          {/* <Button
                 variant="danger"
                 onClick={this.closeCityModal}>
                 X </Button> */}
 
-          </Modal.Header>
+        </Modal.Header>
 
-          <Modal.Body>
-            {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
-            {props.weather
-              &&
-              <WeatherList
-                weather={props.weather}
+        <Modal.Body>
+
+          {props.weather
+            &&
+            <WeatherList weather={props.weather} />
+          }
+
+        </Modal.Body>
+
+
+        <Modal.Footer>
+          <Form onSubmit={handleCitySubmit}>
+            {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
+            <Form.Group className="yes" controlId="formBasicCity">
+              <Form.Label>Enter Your City:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Where we jammin'?"
+                onInput={handleCityInput}
               />
-            }
-          </Modal.Body>
-
-
-          <Modal.Footer>
-            <Form onSubmit={handleCitySubmit}>
-              {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
-              <Form.Group className="" controlId="formBasicCity">
-                <Form.Label>Enter Your City:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Where we jammin'?"
-                  onInput={handleCityInput}
-                />
-                <Form.Text className="text-muted"
-                >
-                  Please share your home city or some other location you're trying to jam at!
-                </Form.Text>
-              </Form.Group>
-
+              <Form.Text className="text-muted"
+              >
+                Please share some other location you're trying to jam at!
+              </Form.Text>
+            </Form.Group>
+            <div className="lower-modal-buttons">
               <Button
                 variant="primary"
                 type='submit'
-              >
-              Go
-              </Button>
+                className="submit-weather-button"
+              >Go</Button>
 
-            </Form>
-          </Modal.Footer>
-</Modal>
-      
+              <Button
+                variant="secondary"
+                onClick={closeWeatherModal}
+                className="close-button"
+              >Close</Button>
+            </div>
+          </Form>
+        </Modal.Footer>
+      </Modal>
 
-        
-          <Button
-            onClick={openWeatherModal}
-            className="feature-card"
-          >
-            <p>Find Your Weather!</p>
-          </Button>
-      
-      
+
+
+      <Button
+        onClick={openWeatherModal}
+        className="feature-card"
+      >
+        <p>Find Your Weather!</p>
+      </Button>
+
+
     </>
   )
 }

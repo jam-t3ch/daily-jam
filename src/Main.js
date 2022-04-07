@@ -7,9 +7,7 @@ import GameModal from './GameModal'
 const SERVER = process.env.REACT_APP_SERVER
 
 const Main = (props) => {
-  // const [email, setEmail] = useState(null)
   const [location, setLocation] = useState('Seattle')
-  // const [showWeatherCarousel, setCarousel] = useState(false)
   const [weather, setWeather] = useState(null)
   const [showGameModal, setGameModal] = useState(false)
 

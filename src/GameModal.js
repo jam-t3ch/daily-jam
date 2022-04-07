@@ -3,8 +3,8 @@ import {useState, useEffect} from 'react';
 import { Container, Row, Col, Button, Accordion, ProgressBar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import GameDisplayList from './GameDisplayList';
 import './GameModal.css';
-import jamjar from './logo512.png'
-import shuffleIcon from './shuffle.png'
+import jamjar from './img/logo512.png'
+import shuffleIcon from './img/shuffle.png'
 
 
 

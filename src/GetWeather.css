@@ -11,10 +11,46 @@
   text-align: center;
 }
 
+.modal-title{
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 1.4em;
+}
+
 .feature-card p{
   text-align: center;
   display: block;
   margin: auto;
+}
+
+.submit-weather-button{
+  background-image: url(../public/images/weatherbutton.png);
+  background-size: cover;
+  font-size: 2em;
+  width:40%;
+  height:auto;
+  border-radius: 25px;
+  margin: 1vh auto 1vh 1vw;
+  display:flex;
+  border-color: blanchedalmond;
+  text-align: center;
+}
+
+.close-button{
+  background-image: url(../public/images/weatherbutton.png);
+  background-size: cover;
+  font-size: 2em;
+  width:40%;
+  height:auto;
+  border-radius: 25px;
+  margin: 1vh 1vw 1vh auto;
+  display:flex;
+  border-color: blanchedalmond;
+  text-align: center;
+}
 
 
+.lower-modal-buttons{
+  display:flex;
 }
