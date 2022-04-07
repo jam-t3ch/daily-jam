@@ -7,6 +7,7 @@ import NotesForm from './NotesForm';
 import NotesDisplay from './NotesDisplay';
 import './App.css';
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
+import { Container } from 'react-bootstrap';
 
 const API_SERVER = process.env.REACT_APP_SERVER;
 
@@ -16,7 +17,7 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
-  const [noteDisplay, toggleNotes] = useState(true)
+  const [noteDisplay, noteToggle] = useState(true)
   const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
 
 
@@ -116,9 +117,7 @@ const App = () => {
   getNotes();
 
 
-  // hide and show notes from dropdown
-  const handleHideNotes = () => toggleNotes(false)
-  const handleShowNotes = () => toggleNotes(true)
+
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
@@ -137,18 +136,15 @@ const App = () => {
       <Header
         weather={weather}
         location={location}
-        handleHideNotes={(something) => handleHideNotes(something)}
-        handleShowNotes={(something) => handleShowNotes(something)}
-        noteDisplay={noteDisplay}
+        noteToggle={(something) => noteToggle(something)}
 
       />
-      {noteDisplay
-        &&
-        <NotesForm
-          postNote={(something) => postNote(something)}
-        />
-      }
-      {isAuthenticated && noteDisplay
+
+      <NotesForm
+        postNote={(something) => postNote(something)}
+      />
+
+      {isAuthenticated
         ?
         <NotesDisplay
           notes={notes}
@@ -156,6 +152,8 @@ const App = () => {
           putNote={(something) => putNote(something)} />
         :
         null}
+
+
 
       <Main
         locationObtained={(something) => locationObtained(something)}
