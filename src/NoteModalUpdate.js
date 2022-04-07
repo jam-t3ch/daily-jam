@@ -8,7 +8,7 @@ class NoteModalUpdate extends React.Component {
     let editedNote = {
       name: e.target.name.value || this.props.note.name,
       description: e.target.description.value || this.props.note.description,
-      user: this.props.note.email,
+      user: this.props.note.user,
       _id: this.props.note._id,
       __v: this.props.note.__v
     }
