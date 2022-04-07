@@ -57,13 +57,14 @@ const Main = (props) => {
       </Col>
 
       <Modal
+      
         fullscreen={true}
         className="game-modal"
         show={showGameModal}
         onHide={() => onHide()}>
         <Modal.Header closeButton>WORD JAM</Modal.Header>
         <Modal.Body
-          className="modal-body">
+          className="game">
           <GameModal />
         </Modal.Body>
       </Modal>

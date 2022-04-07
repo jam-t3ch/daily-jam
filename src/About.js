@@ -12,7 +12,9 @@ const About = (props) => {
   <Accordion.Item eventKey="0">
     <Accordion.Header>About Us</Accordion.Header>
     <Accordion.Body>
+      <div className='about'>
       {AboutUs}
+      </div>
     </Accordion.Body>
   </Accordion.Item>
   <Accordion.Item eventKey="1">

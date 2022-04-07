@@ -36,7 +36,7 @@ const Header = (props) => {
             weather={props.weather}
           />
           :
-          <Card id='weather'>No Weather Data</Card>
+          <div id='noweather'>No Weather Data</div>
         }
 
       </>

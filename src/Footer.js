@@ -5,7 +5,7 @@ const Footer = () => {
 
     return (
       <footer>
-        &copy; jam-t3ch
+        <p>&copy; jam-t3ch</p>
         <About/>
       </footer>
     );

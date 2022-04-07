@@ -21,7 +21,7 @@
   font-size:x-large
 }
 
-.modal-body {
+.game{
   background-image: url(../public/images/blackberries.jpg);
   height:100vh;
   background-position: center;

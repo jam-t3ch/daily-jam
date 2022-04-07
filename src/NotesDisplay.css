@@ -1,12 +1,19 @@
 ul {
   background-image: url(../public/images/pink-notepad.png);
-  height:60px;
+  height:fit-content;
   background-position: center;
   background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
   list-style-image: url(../public/list-item.png);
+  justify-content: center;
 }
 
 li {
   margin-left: 6vw;
 }
+
+li .button {
+  
+}
+
