@@ -13,14 +13,15 @@ const WeatherMarquee = (props) => {
           
           // DISPLAYING OUR CURRENT CITY WEATHER ON CAROUSEL ONCE WE HAVE WEATHER IN STATE ON APP.JS
           <Container style={{ width: '100%', height: '5vh' }}>
-            <Carousel>
+            <Carousel controls={false}>
               {props.weather.map(day => (
 
                 <Carousel.Item
                   key={day.date}
                   className="carousel-item"
                 >
-                  <p>Date: {day.date} Weather: {day.description}</p>
+                  <p>Date: {day.date}</p>
+                  <p>Weather: {day.description}</p>
                 </Carousel.Item>
               ))}
             </Carousel>

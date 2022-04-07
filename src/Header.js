@@ -17,7 +17,7 @@ const Header = (props) => {
           <h1>Daily Jam</h1>
           <div>
           <input id='menu-toggle' type='checkbox'/>
-          <label className='menu-button-container' for='menu-toggle'>
+          <label className='menu-button-container' htmlFor='menu-toggle'>
             <div className='menu-button'>
             </div>
           </label>

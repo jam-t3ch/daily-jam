@@ -1,6 +1,20 @@
 .feature-card{
+  background-image: url(../public/images/weatherbutton.png);
+  background-size: cover;
   font-size: 1em;
   width:30vw;
   height:auto;
+  border-radius: 15px;
   margin: 1vh auto 1vh auto;
+  display:flex;
+  border-color: blanchedalmond;
+  text-align: center;
+}
+
+.feature-card p{
+  text-align: center;
+  display: block;
+  margin: auto;
+
+
 }
