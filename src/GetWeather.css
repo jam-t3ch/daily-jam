@@ -1,5 +1,6 @@
 .feature-card{
-  font-size: 15vw 15vh;
-  width:30%;
-  height:30%;
+  font-size: 1em;
+  width:30vw;
+  height:auto;
+  margin: 1vh auto 1vh auto;
 }

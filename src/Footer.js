@@ -1,14 +1,15 @@
 import React from 'react';
+import About from './About';
 
-class Footer extends React.Component {
-  render() {
+const Footer = () => {
 
     return (
       <footer>
-        &copy; jam-t3ch
+        <p>&copy; jam-t3ch</p>
+        <About/>
       </footer>
     );
   }
-}
+
 
 export default Footer
