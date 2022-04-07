@@ -11,14 +11,18 @@
   text-align: center;
 }
 
+.modal-title{
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 1.4em;
+}
+
 .feature-card p{
   text-align: center;
   display: block;
   margin: auto;
-
-
 }
-
 
 .submit-weather-button{
   background-image: url(../public/images/weatherbutton.png);
@@ -32,6 +36,7 @@
   border-color: blanchedalmond;
   text-align: center;
 }
+
 .close-button{
   background-image: url(../public/images/weatherbutton.png);
   background-size: cover;
@@ -44,6 +49,7 @@
   border-color: blanchedalmond;
   text-align: center;
 }
+
 
 .lower-modal-buttons{
   display:flex;
