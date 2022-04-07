@@ -1,170 +1,296 @@
-import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
 
-class GameModal extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      guess: ''
+import {useState, useEffect} from 'react';
+import { Container, Row, Col, Button, Accordion, ProgressBar, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import GameDisplayList from './GameDisplayList';
+import './GameModal.css';
+import jamjar from './logo512.png'
+import shuffleIcon from './shuffle.png'
+
+
+
+const GameModal = (props) => {
+  const [showGame, setShowGame] = useState(false)
+  const [guess, setGuess] = useState('')
+  const [correct, setCorrect] = useState(false)
+  const [wordArr, setWordArr] = useState(['W','O','D','S'])
+  const centerLetter = 'R'
+  const wordList = ['DOR','ROD','ROO','ROW','DOOR','ODOR','RODS','ROOD','ROOS','ROWS','WORD','DOORS','DROSS','ODORS','ROODS','SWORD','WORDS','SORDOR','SORROW', 'SWORDS','SORDORS','SORROWS']
+  const [displayList, setDisplayList] = useState([])
+  const progress = Math.floor(100 * ((displayList.length)/(wordList.length)))
+  console.log(progress);
+  const [accuracyMsg, setAccuracyMsg] = useState('')
+  
+  useEffect(() => {
+    // re-renders on shuffle
+  },[wordArr])
+
+
+
+  const handleGuess = (wordList, guess) => {
+    console.log(guess)
+    if(displayList.includes(guess)) {
+      setCorrect(false)
+      setAccuracyMsg('You already found that one!')
+    } else if(guess === '') {
+      setCorrect(false)
+      setAccuracyMsg('Click or type a word.')
+    } else if(wordList.includes(guess)) {
+      setDisplayList([...displayList,guess])
+      setCorrect(true)
+      setAccuracyMsg('Well done!')
+    } else {
+      setCorrect(false)
+      setAccuracyMsg('Not in word list.')
     }
+    setGuess('')
+    console.log('handle guess works')
+    console.log(displayList)
+    console.log(displayList.length)
   }
 
-  handleWClick = (e) => {
-    this.setState({
-      guess: this.state.guess + 'W'
-    })
+  
+
+  const showWordJam = (e) => {
+    setShowGame(true)
   }
 
-  handleOClick = (e) => {
-    this.setState({
-      guess: this.state.guess + 'O'
-    })
+  const handle0Click = (e) => {
+    setGuess(guess + `${wordArr[0]}`)
+    setAccuracyMsg('')
   }
 
-  handleRClick = (e) => {
-    this.setState({
-      guess: this.state.guess + 'R'
-    })
+  const handle1Click = (e) => {
+    setGuess(guess + `${wordArr[1]}`)
+    setAccuracyMsg('')
   }
 
-  handleDClick = (e) => {
-    this.setState({
-      guess: this.state.guess + 'D'
-    })
+  const handleCenterClick = (e) => {
+    setGuess(guess + `${centerLetter}`)
+    setAccuracyMsg('')
   }
 
-  handleSClick = (e) => {
-    this.setState({
-      guess: this.state.guess + 'S'
-    })
+  const handle2Click = (e) => {
+    setGuess(guess + `${wordArr[2]}`)
+    setAccuracyMsg('')
   }
 
-  handleDeleteClick = (e) => {
-    this.setState({
-      guess: this.state.guess.slice(0, -1)
-    })
+  const handle3Click = (e) => {
+    setGuess(guess + `${wordArr[3]}`)
+    setAccuracyMsg('')
   }
 
-  handleBackspace = (e) => {
-    if (e.key === 'Backspace') {
-      this.setState({
-        guess: this.state.guess.slice(0, -1)
-      });
-      console.log('backspace function ran.')
+  const handleDeleteClick = (e) => {
+    setGuess(guess.slice(0, -1))
+    setAccuracyMsg('')
+  }
+
+
+  const handleShuffleClick = (array) => {
+
+    let currentIndex = array.length, randomIndex;
+    let newArray = [];
+    array.forEach(value => newArray.push(value))
+    console.log(currentIndex)
+
+    //while elements remain to shuffle
+    while (currentIndex !== 0) {
+
+      //pick a remaining element
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      console.log(randomIndex)
+      currentIndex--
+
+      //and swap it with current element
+      [newArray[currentIndex], newArray[randomIndex]] = [
+        newArray[randomIndex], newArray[currentIndex]];
     }
+
+    console.log(array);
+    setWordArr(newArray);
+    setAccuracyMsg('')
   }
 
-  handleKeyDown = (e) => {
+  const handleBackspace = (e) => {
+    if(e.key === 'Backspace') {
+      setGuess(guess.slice(0, -1))
+    }
+    setAccuracyMsg('')
+  }
+  
+
+  const handleKeyDown = (e) => {
     let keydown = '';
-    console.log(e.key);
-    if (e.key.toUpperCase() === 'W') {
-      keydown = 'W';
-    } else if (e.key.toUpperCase() === 'O') {
-      keydown = 'O';
-    } else if (e.key.toUpperCase() === 'R') {
-      keydown = 'R';
-    } else if (e.key.toUpperCase() === 'D') {
-      keydown = 'D';
-    } else if (e.key.toUpperCase() === 'S') {
-      keydown = 'S';
-    } /*else if(e.key === 'Backspace') {
-      this.setState({
-        guess: this.state.guess.slice(0, -1)
-      });
-    }*/ else {
+    console.log(e)
+    if(e.key.toUpperCase() === `${wordArr[0]}`) {
+      keydown = `${wordArr[0]}`;
+    } else if(e.key.toUpperCase() === `${wordArr[1]}`) {
+      keydown = `${wordArr[1]}`;
+    } else if(e.key.toUpperCase() === `${centerLetter}`) {
+      keydown = `${centerLetter}`;
+    } else if(e.key.toUpperCase() === `${wordArr[2]}`) {
+      keydown = `${wordArr[2]}`;
+    } else if(e.key.toUpperCase() === `${wordArr[3]}`) {
+      keydown = `${wordArr[3]}`;
+    } else{
       keydown = '';
     }
-    // console.log(keydown);
-    this.setState({
-      guess: this.state.guess + keydown
-    })
+      setGuess(guess + keydown)
+      setAccuracyMsg('')
   }
 
+  const doesBoth = (e) => {
+    handleKeyDown(e);
+    handleBackspace(e);
+  }
 
-
-  render() {
+  const styles = {
+    response: {
+      color: correct ? "green" : "red"
+    }
+  }
 
     return (
 
+      <>
+
+      
       <div
-        onKeyDown={this.handleBackspace}
-        tabIndex="0"
-      >
+      className="game-body"
+      onKeyDown={doesBoth}
+      tabIndex="0">
 
-        <div
-          className="game-body"
-          onKeyDown={this.handleKeyDown}
-          tabIndex="0"
-        >
+        
 
-          <h2>{this.state.guess}<span className="blinking-cursor"></span><span className="hidden-l">l</span></h2>
+        <Container>
 
-          <Container>
+        {showGame ? (
 
-            <Row className="gameRowOne">
+          <>
+
+          <OverlayTrigger
+            className="instructions-button"
+            placement='bottom'
+            overlay={
+              <Tooltip>
+              <p>Words <strong>must</strong> include center letter.</p>
+              <p>Words <strong>must</strong> be 3+ letters long.</p>
+              <p>No proper nouns or slang.</p>
+              <p>Letters <strong>CAN</strong> be used more than once in a word.</p>
+              </Tooltip>
+            }
+          >
+            <Button
+              className="instructions-button"
+              variant="outline-secondary"
+            >Rules
+            </Button> 
+          </OverlayTrigger>  
+          <p
+          style={styles.response}
+          >{accuracyMsg}<span className="hidden-l">l</span></p>
+
+          <ProgressBar
+          now={progress}/>
+
+          <h2>{guess}<span className="blinking-cursor"></span><span className="hidden-l">l</span></h2>
+          
+          <Row className="gameRowOne">
+            <Col></Col>
+            <Col>
+              <Button
+                key=""
+                size="lg"
+                onClick={() => handle0Click()}
+                variant="outline-primary">{wordArr[0]}</Button>
+            </Col>
+            <Col></Col>
+          </Row>
+          <Row className="gameRowTwo">
+              <Col>
+                <Button
+                  className="word-index-1"
+                  size="lg"
+                  onClick={() => handle1Click()}
+                  variant="outline-primary">{wordArr[1]}</Button>
+              </Col>
+              <Col>
+                <Button
+                  size="lg"
+                  onClick={() => handleCenterClick()}
+                  variant="primary">{centerLetter}</Button>
+              </Col>
+              <Col>
+                <Button
+                  size="lg"
+                  onClick={() => handle2Click()}
+                  variant="outline-primary">{wordArr[2]}</Button>
+              </Col>
+            </Row><Row className="gameRowThree">
               <Col></Col>
               <Col>
                 <Button
                   size="lg"
-                  onClick={() => this.handleWClick()}
-                  variant="outline-primary">W</Button>
+                  onClick={() => handle3Click()}
+                  variant="outline-primary">{wordArr[3]}</Button>
               </Col>
               <Col></Col>
-            </Row>
-
-            <Row className="gameRowTwo">
+            </Row><Row className="gameRowFour">
               <Col>
                 <Button
-                  size="lg"
-                  onClick={() => this.handleOClick()}
-                  variant="outline-primary">O</Button>
-              </Col>
-              <Col>
-                <Button
-                  size="lg"
-                  onClick={() => this.handleRClick()}
-                  variant="primary">R</Button>
-              </Col>
-              <Col>
-                <Button
-                  size="lg"
-                  onClick={() => this.handleDClick()}
-                  variant="outline-primary">D</Button>
-              </Col>
-            </Row>
-
-            <Row className="gameRowThree">
-              <Col></Col>
-              <Col>
-                <Button
-                  size="lg"
-                  onClick={() => this.handleSClick()}
-                  variant="outline-primary">S</Button>
-              </Col>
-              <Col></Col>
-            </Row>
-
-            <Row className="gameRowFour">
-              <Col>
-                <Button
-                  onClick={() => this.handleDeleteClick()}
+                  onClick={() => handleDeleteClick()}
                   variant="outline-danger">Delete</Button>
               </Col>
               <Col>
-                <Button variant="outline-warning">Shuffle</Button>
+                <Button
+                variant="outline-warning"
+                  className="shuffle-button">
+                  <img
+                    className="shuffle-icon"
+                    src={shuffleIcon}
+                    alt="shuffle icon"
+                    onClick={() => handleShuffleClick(wordArr)}
+                    />
+                </Button>
               </Col>
               <Col>
-                <Button variant="outline-success">Enter</Button>
+                <Button
+                  onClick={() => handleGuess(wordList, guess)}
+                  variant="outline-success">Enter</Button>
               </Col>
             </Row>
 
-          </Container>
+            <>
+              <Accordion defaultActiveKey="0">
+                <GameDisplayList
+                guess={guess}
+                wordList={wordList}
+                displayList={displayList}
+                />
+              </Accordion>
+            </>
+            </>
+              ) :
+          (
+                <div
+                  className="game-greeting-container">
+                  <img
+                    className="centered-image"
+                    alt="jam jar logo"
+                    src={jamjar} />
+                  <p
+                    className="word-jam-name">WordJam</p>
+                  <Button
+                    className="centered-play-button"
+                    variant="dark"
+                    onClick={() => showWordJam()}
+                  >Click to play</Button>
+                </div>
+          )}
+        </Container>
 
-        </div>
-
-      </div>
+       </div>
+      </> 
     )
   }
-}
 
 export default GameModal;
