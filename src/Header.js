@@ -1,22 +1,31 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import WeatherMarquee from './WeatherMarquee';
 import Profile from './Profile'
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
+import './Header.css'
 
 
 const Header = (props) => {
-  console.log(props)
+  // console.log('weather on header', props.weather)
   const { isAuthenticated } = useAuth0();
-    return (
-      <>
+  return (
+    <>
 
-        <header>
-          <Profile/>
-          Daily Jam
-          {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
+        <header className='top-nav'>
+          <h1>Daily Jam</h1>
+          <div>
+          <input id='menu-toggle' type='checkbox'/>
+          <label className='menu-button-container' for='menu-toggle'>
+            <div className='menu-button'>
+            </div>
+          </label>
+          <ul className='menu'>
+          <li>{isAuthenticated ? <LogoutButton/> : <LoginButton/>}</li>
+          <li>{isAuthenticated ? <Profile/> : <p>Please Log in</p>}</li>
+          </ul>
+          </div>
         </header>
 
         {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
@@ -26,12 +35,13 @@ const Header = (props) => {
             weather={props.weather}
           />
           :
-          <Card>Empty weather marquee. no weather data yet.</Card>
+          <div id='noweather'>No Weather Data</div>
         }
 
-      </>
-    );
-  }
+
+    </>
+  );
+}
 
 
 export default withAuth0(Header);

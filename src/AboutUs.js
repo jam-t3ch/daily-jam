@@ -3,31 +3,31 @@ import {Carousel} from 'react-bootstrap';
 
 
 
-class AboutUs extends React.Component {
-  render() {
+const AboutUs = (props) => {
+
     return (
       <>
-      <Carousel fade>
+      <Carousel>
         <Carousel.Item>
-          <div>
+          <div className='about'>
             <h2>Michael Maker</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
           </div>
         </Carousel.Item>
         <Carousel.Item>
-          <div>
+          <div className='about'>
             <h2>James Brooks</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
           </div>
         </Carousel.Item>
         <Carousel.Item>
-          <div>
+        <div className='about'>
             <h2>Chris Yamas</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
           </div>
         </Carousel.Item>
         <Carousel.Item>
-          <div>
+        <div className='about'>
             <h2>Tai Egashira</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</p>
           </div>
@@ -36,6 +36,5 @@ class AboutUs extends React.Component {
       </>
     )
   }
-}
 
 export default AboutUs;

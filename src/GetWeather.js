@@ -1,116 +1,101 @@
 import React from 'react';
+import { useState } from 'react';
+import WeatherList from './WeatherList';
 import { Button, Modal, Card, Form } from 'react-bootstrap';
 import './GetWeather.css';
-import WeatherList from './WeatherList';
 
-class GetWeather extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showCityModal: false,
-      city: "Seattle",
-    }
+const GetWeather = (props) => {
+  const [showModal, openModal] = useState(false)
+  const [city, updateCity] = useState('Seattle')
+
+  const openWeatherModal = () => {
+    openModal(true)
   }
 
-  openCityModal = () => {
-    this.setState({
-      showCityModal: true
-    })
-  }
-
-  closeCityModal = () => {
-    this.setState({
-      showCityModal: false
-    })
+  const closeWeatherModal = () => {
+    openModal(false)
   }
 
   // updates local state to city being typed
-  handleCityInput = (e) => {
-    // console.log(this.state.city);
-    this.setState({
-      city: e.target.value
-    })
-
+  const handleCityInput = (e) => {
+    updateCity(e.target.value)
   }
 
   // Called on submit this function calls handleCityWeather function on Main.js and passes state in local city to it as input for API call
-  handleCitySubmit = (e) => {
+  const handleCitySubmit = (e) => {
     e.preventDefault();
     // console.log('handle city submit is running', this.state.city);
-    this.props.handleCityWeather(this.state.city);
+    props.handleCityWeather(city);
     // this.closeCityModal();
   }
 
-  render() {
-    return (
-      <>
-        {this.state.showCityModal
-          ?
-          <Modal.Dialog style={{ width: '100%' }}>
-            <Modal.Header>
-              <Modal.Title>{this.props.currentLocation} Local Weather</Modal.Title>
 
-              <Button
+  return (
+    <>
+      <Modal show={showModal} onHide={closeWeatherModal}>
+        <Modal.Dialog style={{ width: '100%' }} >
+          <Modal.Header closeButton onHide={closeWeatherModal}>
+            <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
+
+            {/* <Button
                 variant="danger"
                 onClick={this.closeCityModal}>
-                X </Button>
+                X </Button> */}
 
-            </Modal.Header>
+          </Modal.Header>
 
-            <Modal.Body>
-              {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
-              {this.props.weather
-                &&
-                <WeatherList
-                  weather={this.props.weather}
+          <Modal.Body>
+            {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
+            {props.weather
+              &&
+              <WeatherList
+                weather={props.weather}
+              />
+            }
+          </Modal.Body>
+
+
+          <Modal.Footer>
+            <Form onSubmit={handleCitySubmit}>
+              {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
+              <Form.Group className="" controlId="formBasicCity">
+                <Form.Label>Enter Your City:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Where we jammin'?"
+                  onInput={handleCityInput}
                 />
-              }
-            </Modal.Body>
-
-
-            <Modal.Footer>
-              <Form onSubmit={this.handleCitySubmit}>
-                {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
-                <Form.Group className="" controlId="formBasicCity">
-                  <Form.Label>Enter Your City:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Where we jammin'?"
-                    onInput={this.handleCityInput}
-                  />
-                  <Form.Text className="text-muted"
-                  >
-                    Please share your home city or some other location you're trying to jam at!
-                  </Form.Text>
-                </Form.Group>
-
-                <Button
-                  variant="primary"
-                  type='submit'
+                <Form.Text className="text-muted"
                 >
-                  Go
-                </Button>
+                  Please share your home city or some other location you're trying to jam at!
+                </Form.Text>
+              </Form.Group>
 
-              </Form>
-            </Modal.Footer>
-          </Modal.Dialog>
+              <Button
+                variant="primary"
+                type='submit'
+              >
+                Go
+              </Button>
 
-          :
+            </Form>
+          </Modal.Footer>
+        </Modal.Dialog>
+</Modal>
+      
 
-          <Card>
-            <Button
-              onClick={this.openCityModal}
-              className="feature-card"
-            >
-              <p>Find</p>
-              <p>Your</p>
-              <p>Weather!</p>
-            </Button>
-          </Card>
-        }
-      </>
-    );
-  }
+        <Card>
+          <Button
+            onClick={openWeatherModal}
+            className="feature-card"
+          >
+            <p>Find Your</p>
+            <p>Weather!</p>
+          </Button>
+        </Card>
+      
+    </>
+  )
 }
 
 export default GetWeather;

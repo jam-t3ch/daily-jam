@@ -1,3 +1,4 @@
+
 import {useState, useEffect} from 'react';
 import { Container, Row, Col, Button, Accordion, ProgressBar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import GameDisplayList from './GameDisplayList';
@@ -83,6 +84,7 @@ const GameModal = (props) => {
     setAccuracyMsg('')
   }
 
+
   const handleShuffleClick = (array) => {
 
     let currentIndex = array.length, randomIndex;
@@ -148,6 +150,7 @@ const GameModal = (props) => {
   }
 
     return (
+
       <>
 
       
