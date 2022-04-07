@@ -4,13 +4,15 @@ import { Container, Carousel } from 'react-bootstrap';
 import './WeatherMarquee.css';
 
 const WeatherMarquee = (props) => {
-  // console.log('props.weather on marquee:', props.weather)
+  console.log('props.weather on marquee:', props)
   return (
     <>
       {
-        props.weather
+
+        props.weather && props.marqueeDisplay
+
           ?
-          
+
           // DISPLAYING OUR CURRENT CITY WEATHER ON CAROUSEL ONCE WE HAVE WEATHER IN STATE ON APP.JS
           <Container style={{ width: '100%', height: '5vh' }}>
             <Carousel controls={false}>
@@ -29,7 +31,8 @@ const WeatherMarquee = (props) => {
 
           :
 
-          <Container className="carousel-item"> No weather data pulled </Container>
+          <Container className="carousel-item"> Click weather to update marquee </Container>
+
       }
     </>
   )
