@@ -7,7 +7,6 @@ import NotesForm from './NotesForm';
 import NotesDisplay from './NotesDisplay';
 import './App.css';
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
-import { Container } from 'react-bootstrap';
 
 const API_SERVER = process.env.REACT_APP_SERVER;
 
@@ -17,7 +16,6 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
-  const [noteDisplay, noteToggle] = useState(true)
   const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
 
 
