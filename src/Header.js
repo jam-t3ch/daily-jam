@@ -1,42 +1,58 @@
-import React from 'react';
-import WeatherMarquee from './WeatherMarquee';
+import React from 'react'
+import WeatherMarquee from './WeatherMarquee'
 import Profile from './Profile'
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
-import { withAuth0, useAuth0 } from '@auth0/auth0-react';
+import { useState } from 'react'
+import { withAuth0, useAuth0 } from '@auth0/auth0-react'
 import './Header.css'
+import { Button } from 'react-bootstrap'
 
 
 const Header = (props) => {
-  // console.log('weather on header', props.weather)
-  const { isAuthenticated } = useAuth0();
+  const [marqueeDisplay, hideMarquee] = useState(true)
+
+  const { isAuthenticated } = useAuth0()
+
+  // hide and show marquee from dropdown
+  const handleHide = () => hideMarquee(false)
+  const handleShow = () => hideMarquee(true)
+
+
+
+
   return (
     <>
-
-        <header className='top-nav'>
-          <h1>Daily Jam</h1>
-          <div>
-          <input id='menu-toggle' type='checkbox'/>
+      <header className='top-nav'>
+        <h1>Daily Jam</h1>
+        <div>
+          <input id='menu-toggle' type='checkbox' />
           <label className='menu-button-container' htmlFor='menu-toggle'>
             <div className='menu-button'>
             </div>
           </label>
           <ul className='menu'>
-          <li>{isAuthenticated ? <LogoutButton/> : <LoginButton/>}</li>
-          <li>{isAuthenticated ? <Profile/> : <p>Please Log in</p>}</li>
+            <li>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
+            <li>{isAuthenticated ? <Profile /> : <p>Please Log in</p>}</li>
+            {props.weather &&
+              <li> {marqueeDisplay ? <Button onClick={handleHide}>Hide Weather Marquee</Button> : <Button onClick={handleShow}>Show Weather Marquee</Button>}</li>
+            }
+            <li> {props.noteDisplay ? <Button onClick={props.handleHideNotes}>Hide Notes</Button> : <Button onClick={props.handleShowNotes}>Show Notes</Button>}</li>
           </ul>
-          </div>
-        </header>
+        </div>
+      </header>
 
-        {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
-        {props.weather
+      {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
+      {
+        props.weather
           ?
           <WeatherMarquee
             weather={props.weather}
+            marqueeDisplay={marqueeDisplay}
           />
           :
           <div id='noweather'>No Weather Data</div>
-        }
+      }
 
 
     </>
