@@ -20,7 +20,7 @@ const WeatherMarquee = (props) => {
 
                 <Carousel.Item
                   key={day.date}
-                  className="carousel-item"
+                  className="weather-marquee"
                 >
                   <p>Date: {day.date}</p>
                   <p>Weather: {day.description}</p>
@@ -31,7 +31,7 @@ const WeatherMarquee = (props) => {
 
           :
 
-          <Container className="carousel-item"> Click weather to update marquee </Container>
+          <Container className="weather-marquee"> Click weather to update marquee </Container>
 
       }
     </>
