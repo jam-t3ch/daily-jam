@@ -1,10 +1,20 @@
+body {
+  background-image: url(../public/images/jammydrip.jpg);
+  background-size: cover;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .app-card {
+  display: flex;
   background-image: url(../public/images/blackberries.jpg);
-  height:20vh;
+  height:15vh;
+  width: 20vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .app-card:hover {
