@@ -8,9 +8,8 @@ class NotesForm extends React.Component {
     let newNote = {
       name: e.target.name.value,
       description: e.target.description.value,
-      user: "test@email.com"
+      user: this.props.user.email
     }
-    console.log(newNote)
     // console.log(this.props.postNote(newNote));
     this.props.postNote(newNote);
     e.target.name.value = '';
