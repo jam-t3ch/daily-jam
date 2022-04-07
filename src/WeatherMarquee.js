@@ -4,7 +4,7 @@ import { Container, Carousel } from 'react-bootstrap';
 import './WeatherMarquee.css';
 
 const WeatherMarquee = (props) => {
-  console.log('on marquee:', props.weather)
+  // console.log('props.weather on marquee:', props.weather)
   return (
     <>
       {

@@ -1,28 +1,28 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { Col, Card, Modal } from 'react-bootstrap';
-import GetWeather from './GetWeather';
-import GameModal from './GameModal';
+import axios from 'axios'
+import { useState } from 'react'
+import { Col, Card, Modal } from 'react-bootstrap'
+import GetWeather from './GetWeather'
+import GameModal from './GameModal'
 
 const SERVER = process.env.REACT_APP_SERVER
 
 const Main = (props) => {
-  const [email, setEmail] = useState(null)
+  // const [email, setEmail] = useState(null)
   const [location, setLocation] = useState('Seattle')
-  const [showWeatherCarousel, setCarousel] = useState(false)
+  // const [showWeatherCarousel, setCarousel] = useState(false)
   const [weather, setWeather] = useState(null)
   const [showGameModal, setGameModal] = useState(false)
 
   // GET WEATHER FROM SERVER Event listener for this is in GetWeather and parameter value should be user input of city
   const handleCityWeather = async (city) => {
     try {
-      console.log('fn on Main sending this to server/weatherCity:', city)
-      let userWeather = await axios.get(`${SERVER}/weatherCity`, city)
+      // console.log('fn on Main sending this to server/weatherCity:', city)
+      let userWeather = await axios.get(`${SERVER}/weatherCity?cityName=${city}`)
       let receivedWeather = userWeather.data
-      setWeather([receivedWeather.data])
+      setWeather(receivedWeather)
       setLocation(city)
-      props.locationObtained(location)
-      props.weatherObtained(weather)
+      props.locationObtained(city)
+      props.weatherObtained(receivedWeather)
     } catch {
       console.log("didn't work")
     }
@@ -37,7 +37,7 @@ const Main = (props) => {
   return (
     <>
       <GetWeather
-        handleCityWeather={()=>handleCityWeather()}
+        handleCityWeather={(something)=>handleCityWeather(something)}
         currentLocation={location}
         weather={weather}
       />
@@ -74,7 +74,7 @@ const Main = (props) => {
 }
 
 
-export default Main;
+export default Main
 
 
 

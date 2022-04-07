@@ -8,10 +8,10 @@ import './Header.css'
 
 
 const Header = (props) => {
-  console.log(props)
+  // console.log('weather on header', props.weather)
   const { isAuthenticated } = useAuth0();
-    return (
-      <>
+  return (
+    <>
 
         <header className='top-nav'>
           <h1>Daily Jam</h1>
@@ -38,9 +38,10 @@ const Header = (props) => {
           <div id='noweather'>No Weather Data</div>
         }
 
-      </>
-    );
-  }
+
+    </>
+  );
+}
 
 
 export default withAuth0(Header);
