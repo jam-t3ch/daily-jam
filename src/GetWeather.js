@@ -36,7 +36,7 @@ const GetWeather = (props) => {
     <>
       <Modal show={showModal} onHide={closeWeatherModal}>
         <Modal.Header closeButton onHide={closeWeatherModal}>
-          <Modal.Title>🌪️ {props.currentLocation} Local Weather 🌪️</Modal.Title>
+          <Modal.Title className="modal-title">🌪️ {props.currentLocation} Local Weather 🌪️</Modal.Title>
 
           {/* <Button
                 variant="danger"
@@ -58,7 +58,7 @@ const GetWeather = (props) => {
         <Modal.Footer>
           <Form onSubmit={handleCitySubmit}>
             {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
-            <Form.Group className="" controlId="formBasicCity">
+            <Form.Group className="yes" controlId="formBasicCity">
               <Form.Label>Enter Your City:</Form.Label>
               <Form.Control
                 type="text"
