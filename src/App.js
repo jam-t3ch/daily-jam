@@ -134,8 +134,6 @@ const App = () => {
       <Header
         weather={weather}
         location={location}
-        noteToggle={(something) => noteToggle(something)}
-
       />
 
       <NotesForm
@@ -150,8 +148,6 @@ const App = () => {
           putNote={(something) => putNote(something)} />
         :
         null}
-
-
 
       <Main
         locationObtained={(something) => locationObtained(something)}
