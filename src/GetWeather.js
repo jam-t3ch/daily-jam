@@ -32,8 +32,7 @@ const GetWeather = (props) => {
 
   return (
     <>
-      {showModal
-        ?
+      <Modal show={showModal} onHide={closeWeatherModal}>
         <Modal.Dialog style={{ width: '100%' }} >
           <Modal.Header closeButton onHide={closeWeatherModal}>
             <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
@@ -82,20 +81,19 @@ const GetWeather = (props) => {
             </Form>
           </Modal.Footer>
         </Modal.Dialog>
-
-        :
+</Modal>
+      
 
         <Card>
           <Button
             onClick={openWeatherModal}
             className="feature-card"
           >
-            <p>Find</p>
-            <p>Your</p>
+            <p>Find Your</p>
             <p>Weather!</p>
           </Button>
         </Card>
-      }
+      
     </>
   )
 }
