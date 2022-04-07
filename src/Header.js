@@ -9,30 +9,30 @@ import './Header.css'
 
 
 const Header = (props) => {
-  console.log(props)
+  // console.log('weather on header', props.weather)
   const { isAuthenticated } = useAuth0();
-    return (
-      <>
+  return (
+    <>
 
-        <header>
-          <Profile/>
-          Daily Jam
-          {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
-        </header>
+      <header>
+        <Profile />
+        Daily Jam
+        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+      </header>
 
-        {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
-        {props.weather
-          ?
-          <WeatherMarquee
-            weather={props.weather}
-          />
-          :
-          <Card>Empty weather marquee. no weather data yet.</Card>
-        }
+      {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
+      {props.weather
+        ?
+        <WeatherMarquee
+          weather={props.weather}
+        />
+        :
+        <Card>Empty weather marquee. no weather data yet.</Card>
+      }
 
-      </>
-    );
-  }
+    </>
+  );
+}
 
 
 export default withAuth0(Header);
