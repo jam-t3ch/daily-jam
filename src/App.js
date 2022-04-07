@@ -1,4 +1,4 @@
-import {useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Main from './Main';
@@ -116,11 +116,12 @@ const App = () => {
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
   const locationObtained = (locationEntered) => {
+    // console.log(locationEntered)
     setLocation(locationEntered)
   }
-  const weatherObtained = (weatherRetrieved) => {
-    setWeather(weatherRetrieved)
-
+  const weatherObtained = (retrievedWeather) => {
+    // console.log(retrievedWeather)
+    setWeather(retrievedWeather)
   }
 
   return (
@@ -133,7 +134,7 @@ const App = () => {
 
       <NotesForm
         postNote={(something) => postNote(something)}
-        />
+      />
 
       {isAuthenticated
         ?
@@ -146,7 +147,7 @@ const App = () => {
       }
       <Main
         locationObtained={(something) => locationObtained(something)}
-        weatherObtained={(something) => weatherObtained(something)}
+        weatherObtained={(retrievedWeather) => weatherObtained(retrievedWeather)}
       />
 
 
