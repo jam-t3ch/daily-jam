@@ -10,10 +10,8 @@ const AboutUs = (props) => {
       <Carousel>
         <Carousel.Item>
           <div className='about'>
-            <Carousel.Caption>
             <h2>Michael Maker</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
-            </Carousel.Caption>
           </div>
         </Carousel.Item>
         <Carousel.Item>

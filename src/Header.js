@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import WeatherMarquee from './WeatherMarquee';
 import Profile from './Profile'
 import LoginButton from './LoginButton'
