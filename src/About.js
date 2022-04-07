@@ -13,7 +13,7 @@ const About = (props) => {
     <Accordion.Header>About Us</Accordion.Header>
     <Accordion.Body>
       <div className='about'>
-      {AboutUs}
+      <AboutUs/>
       </div>
     </Accordion.Body>
   </Accordion.Item>

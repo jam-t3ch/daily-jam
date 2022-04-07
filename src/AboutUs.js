@@ -11,7 +11,6 @@ const AboutUs = (props) => {
         <Carousel.Item>
           <div className='about'>
             <Carousel.Caption>
-              <img src='../public/images/jammybg.jpg' alt='jam'/>
             <h2>Michael Maker</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
             </Carousel.Caption>
