@@ -78,7 +78,7 @@ class Main extends React.Component {
           className="game-modal"
           show={this.state.showGameModal}
           onHide={this.onHide}>
-          <Modal.Header closeButton>WORD JAM</Modal.Header>
+          <Modal.Header closeButton/>
           <Modal.Body
             className="modal-body">
             <GameModal/>
