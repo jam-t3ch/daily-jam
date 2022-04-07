@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react';
 import { Accordion } from 'react-bootstrap';
 
 const GameDisplayList = (props) => {
