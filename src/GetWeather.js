@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import WeatherList from './WeatherList';
-import { Button, Modal, Card, Form } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
 import './GetWeather.css';
 
 const GetWeather = (props) => {
@@ -33,7 +33,6 @@ const GetWeather = (props) => {
   return (
     <>
       <Modal show={showModal} onHide={closeWeatherModal}>
-        <Modal.Dialog style={{ width: '100%' }} >
           <Modal.Header closeButton onHide={closeWeatherModal}>
             <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
 
@@ -75,24 +74,22 @@ const GetWeather = (props) => {
                 variant="primary"
                 type='submit'
               >
-                Go
+              Go
               </Button>
 
             </Form>
           </Modal.Footer>
-        </Modal.Dialog>
 </Modal>
       
 
-        <Card>
+        
           <Button
             onClick={openWeatherModal}
             className="feature-card"
           >
-            <p>Find Your</p>
-            <p>Weather!</p>
+            <p>Find Your Weather!</p>
           </Button>
-        </Card>
+      
       
     </>
   )
