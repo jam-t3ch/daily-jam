@@ -4,15 +4,13 @@ import { Container, Carousel } from 'react-bootstrap';
 import './NewsCarousel.css';
 
 const NewsCarousel = (props) => {
-  // console.log('props.news on carousel:', props)
   return (
     <>
       {
-
         props.news
 
           ?
-          <Container style={{ width: '100%', height: 'max-content' }}>
+          <Container style={{ width: '100%', height: 'max-content' }} id="newsCarouselbox">
             <Carousel controls={false}>
               {props.news.map((story, i) => (
 
@@ -29,7 +27,6 @@ const NewsCarousel = (props) => {
 
           :
           null
-
       }
     </>
   )

@@ -11,43 +11,43 @@ class UserNote extends React.Component {
     }
   }
 
-    showUpdateForm = () => {
-      this.setState({
-        noteUpdateModal: true
-      })
-    }
+  showUpdateForm = () => {
+    this.setState({
+      noteUpdateModal: true
+    })
+  }
 
-    onHide = () => {
-      this.setState({
-        noteUpdateModal: false
-      })
-    }
+  onHide = () => {
+    this.setState({
+      noteUpdateModal: false
+    })
+  }
 
   render() {
 
     const note = this.props.note;
 
-    return(
+    return (
 
       <li>
         <span
-          className="note-name">{note.name}</span> 
+          className="note-name">{note.name}</span>
         - {note.description}
         <Button
-        variant="outline-info"
-        className="update-button"
-        onClick={() => this.showUpdateForm()}
+          variant="outline-info"
+          className="update-button"
+          onClick={() => this.showUpdateForm()}
         >Edit</Button>
         <Button
-        variant="outline-danger"
-        className="delete-button"
-        onClick={() => this.props.deleteNote(note._id)}
+          variant="outline-danger"
+          className="delete-button"
+          onClick={() => this.props.deleteNote(note._id)}
         >X</Button>
         <Modal show={this.state.noteUpdateModal} onHide={this.onHide}>
           <NoteModalUpdate
-          note={this.props.note}
-          putNote={this.props.putNote}
-          onHide={this.onHide}/>
+            note={this.props.note}
+            putNote={this.props.putNote}
+            onHide={this.onHide} />
         </Modal>
       </li>
     )

@@ -22,47 +22,45 @@ const Header = (props) => {
       :
       hideMarquee(true)
 
-return (
-  <>
-    <header className='top-nav'>
-      <h1>Daily Jam</h1>
-      <div>
-        <input id='menu-toggle' type='checkbox' />
-        <label className='menu-button-container' htmlFor='menu-toggle'>
-          <div className='menu-button'>
-          </div>
-        </label>
-        <ul className='menu'>
-          <li>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
-          <li>{isAuthenticated ? <Profile /> : <p>Please Log in</p>}</li>
-          {props.weather &&
-  <li> <Button onClick={handleClick}>🌤️ Toggle Weather Marquee ⛈️</Button></li>
-}
-        </ul>
-      </div>
-    </header>
+  return (
+    <>
+      <header className='top-nav'>
+        <h1>Daily Jam</h1>
+        <div>
+          <input id='menu-toggle' type='checkbox' />
+          <label className='menu-button-container' htmlFor='menu-toggle'>
+            <div className='menu-button'>
+            </div>
+          </label>
+          <ul className='menu'>
+            <li>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
+            <li>{isAuthenticated ? <Profile /> : <p>Please Log in</p>}</li>
+            {props.weather &&
+              <li> <Button onClick={handleClick}>🌤️ Toggle Weather Marquee ⛈️</Button></li>
+            }
+          </ul>
+        </div>
+      </header>
 
- <div id='weathermarqueebox'>
-    {props.weather
-      ?
-      <WeatherMarquee
-        weather={props.weather}
-        marqueeDisplay={marqueeDisplay}
-      />
-      :
-      <div id='noweather'>No Weather Data</div>
-    }
-    </div>
-    {props.news
-      ?
-      <NewsCarousel
-        news={props.news}
+      <div id='weathermarqueebox'>
+        {props.weather
+          &&
+          <WeatherMarquee
+            weather={props.weather}
+            marqueeDisplay={marqueeDisplay}
+          />
+        }
+      </div>
+      {props.news
+        ?
+        <NewsCarousel
+          news={props.news}
         />
         :
         <div id='noNews'>Set a city in weather to recieve news from with a headline containing that city</div>
-    }
-  </>
-);
+      }
+    </>
+  );
 
 }
 

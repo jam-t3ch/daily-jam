@@ -10,7 +10,6 @@ class NotesForm extends React.Component {
       description: e.target.description.value,
       user: this.props.user.email
     }
-    // console.log(this.props.postNote(newNote));
     this.props.postNote(newNote);
     e.target.name.value = '';
     e.target.description.value = '';
@@ -23,7 +22,7 @@ class NotesForm extends React.Component {
       <Form
         onSubmit={this.handleNoteSubmit}>
         <Card>
-          <Card.Header>Don't spread yourself thin. Add a note to yourself to stay organized.</Card.Header>
+          <Card.Header>Don't <span className="spread">spread</span> yourself thin. Use reminder notes.</Card.Header>
           <Card.Body>
             <Form.Group>
               <Form.Control type="text" placeholder="Note"  name="name"/>

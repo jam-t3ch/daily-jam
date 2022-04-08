@@ -24,9 +24,7 @@ const GetWeather = (props) => {
   // Called on submit this function calls handleCityWeather function on Main.js and passes state in local city to it as input for API call
   const handleCitySubmit = (e) => {
     e.preventDefault();
-    // console.log('handle city submit is running', this.state.city);
     props.handleCityWeather(city);
-    // this.closeCityModal();
   }
 
   // calling Seattle weather from state on page load
@@ -37,13 +35,6 @@ const GetWeather = (props) => {
       <Modal show={showModal} onHide={closeWeatherModal}>
         <Modal.Header closeButton onHide={closeWeatherModal}>
           <Modal.Title className="modal-title">{props.currentLocation} - 5 Day Forecast</Modal.Title>
-
-
-          {/* <Button
-                variant="danger"
-                onClick={this.closeCityModal}>
-                X </Button> */}
-
         </Modal.Header>
 
         <Modal.Body>

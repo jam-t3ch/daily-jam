@@ -2,9 +2,6 @@ import React from "react";
 import { ListGroup } from 'react-bootstrap';
 
 const WeatherMap = (props) => {
-  // console.log(Broken, typeof Broken)
-  // console.log('./img/' + props.day.imgsrc +'.png')
-
   let weatherVar = props.day.imgsrc || 'Broken'
 
   return (
@@ -13,13 +10,10 @@ const WeatherMap = (props) => {
       key={props.day.date}
       className="weather-list-group" >
 
-      {/* <div
-        className={props.day.imgsrc} /> */}
-      
       <img
         src={`img/${weatherVar}.png`}
         alt="icon"
-        className="test-img"/>
+        className="test-img" />
 
       <div
         className="dayofweek-list">

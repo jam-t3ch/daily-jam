@@ -17,7 +17,6 @@ const GameModal = (props) => {
   const wordList = ['DAM','JAM','MAD','MAM','DAME','DEEM', 'MADE','MAMA','MEAD','MEED','MEME','ADEEM','EDEMA','MADAM','MAMMEE','MAMMA','DAMMED','DEEMED','JAMMED','MADAME','MADDED','ADEEMED','EDAMAME']
   const [displayList, setDisplayList] = useState([])
   const progress = Math.floor(100 * ((displayList.length)/(wordList.length)))
-  console.log(progress);
   const [accuracyMsg, setAccuracyMsg] = useState('')
   
   useEffect(() => {
@@ -27,7 +26,6 @@ const GameModal = (props) => {
 
 
   const handleGuess = (wordList, guess) => {
-    console.log(guess)
     if(displayList.includes(guess)) {
       setCorrect(false)
       setAccuracyMsg('You already found that one!')
@@ -50,9 +48,6 @@ const GameModal = (props) => {
       setAccuracyMsg('Not in word list.')
     }
     setGuess('')
-    console.log('handle guess works')
-    console.log(displayList)
-    console.log(displayList.length)
   }
 
   
@@ -97,14 +92,12 @@ const GameModal = (props) => {
     let currentIndex = array.length, randomIndex;
     let newArray = [];
     array.forEach(value => newArray.push(value))
-    console.log(currentIndex)
 
     //while elements remain to shuffle
     while (currentIndex !== 0) {
 
       //pick a remaining element
       randomIndex = Math.floor(Math.random() * currentIndex);
-      console.log(randomIndex)
       currentIndex--
 
       //and swap it with current element
@@ -112,7 +105,6 @@ const GameModal = (props) => {
         newArray[randomIndex], newArray[currentIndex]];
     }
 
-    console.log(array);
     setWordArr(newArray);
     setAccuracyMsg('')
   }
@@ -127,7 +119,6 @@ const GameModal = (props) => {
 
   const handleKeyDown = (e) => {
     let keydown = '';
-    console.log(e)
     if(e.key.toUpperCase() === `${wordArr[0]}`) {
       keydown = `${wordArr[0]}`;
     } else if(e.key.toUpperCase() === `${wordArr[1]}`) {

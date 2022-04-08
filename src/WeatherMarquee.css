@@ -1,15 +1,20 @@
-
 .weathercarousel {
   width: 100%;
   font-size: 12px;
-  color:aliceblue;
+  color: aliceblue;
   margin-bottom: 2vh;
 }
 
-.weather-marquee p{
+.weather-marquee-placeholder {
+  color: aliceblue;
+  margin: auto;
+  text-align: center;
+}
+
+.weather-marquee p {
   margin-top: 1vh;
-line-height: 0em;
-text-align: center;
+  line-height: 0em;
+  text-align: center;
 }
 
 .carousel-indicators,

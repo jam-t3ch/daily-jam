@@ -5,14 +5,10 @@ import './WeatherMarquee.css';
 
 const WeatherMarquee = (props) => {
 
-  // console.log('props.weather on marquee:', props)
-
   return (
     <>
       {
-
         props.weather && props.marqueeDisplay
-
           ?
 
           // DISPLAYING OUR CURRENT CITY WEATHER ON CAROUSEL ONCE WE HAVE WEATHER IN STATE ON APP.JS
@@ -25,13 +21,13 @@ const WeatherMarquee = (props) => {
                   className="weather-marquee"
                 >
                   <div
-                  className={day.imgsrc}>
+                    className={day.imgsrc}>
                   </div>
 
                   <div
-                  className="inline-marquee-block">
-                  <p>{day.dayofweek}, {day.month} {day.dayNum}</p>
-                  <p>{day.high}°/{day.low}°  {day.condition}</p>
+                    className="inline-marquee-block">
+                    <p>{day.dayofweek}, {day.month} {day.dayNum}</p>
+                    <p>{day.high}°/{day.low}°  {day.condition}</p>
                   </div>
                 </Carousel.Item>
               ))}
@@ -40,7 +36,7 @@ const WeatherMarquee = (props) => {
 
           :
 
-          <Container className="weather-marquee"> Click weather to update marquee </Container>
+          null
 
       }
     </>
