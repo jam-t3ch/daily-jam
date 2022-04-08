@@ -6,22 +6,21 @@ import LogoutButton from './LogoutButton'
 import { useState } from 'react'
 import { withAuth0, useAuth0 } from '@auth0/auth0-react'
 import './Header.css'
-// import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import NewsCarousel from './NewsCarousel'
 
 
 const Header = (props) => {
-  // hideMarquee
-  const [marqueeDisplay, ] = useState(true)
+  const [marqueeDisplay, hideMarquee] = useState(true)
   const { isAuthenticated } = useAuth0()
 
   // hide and show marquee from dropdown
-  // const handleClick = () =>
-  //   marqueeDisplay
-  //     ?
-  //     hideMarquee(false)
-  //     :
-  //     hideMarquee(true)
+  const handleClick = () =>
+    marqueeDisplay
+      ?
+      hideMarquee(false)
+      :
+      hideMarquee(true)
 
 return (
   <>
@@ -36,6 +35,9 @@ return (
         <ul className='menu'>
           <li>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
           <li>{isAuthenticated ? <Profile /> : <p>Please Log in</p>}</li>
+          {props.weather &&
+  <li> <Button onClick={handleClick}>🌤️ Toggle Weather Marquee ⛈️</Button></li>
+}
         </ul>
       </div>
     </header>
@@ -62,7 +64,3 @@ return (
 }
 
 export default withAuth0(Header);
-
-// {props.weather &&
-//   <li> <Button onClick={handleClick}>🌤️ Toggle Weather Marquee ⛈️</Button></li>
-// }
