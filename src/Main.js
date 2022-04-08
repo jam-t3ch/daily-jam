@@ -15,7 +15,6 @@ const Main = (props) => {
   // GET WEATHER FROM SERVER Event listener for this is in GetWeather and parameter value should be user input of city
   const handleCityWeather = async (city) => {
     try {
-      // console.log('fn on Main sending this to server/weatherCity:', city)
       let userWeather = await axios.get(`${SERVER}/weatherCity?cityName=${city}`)
       let receivedWeather = userWeather.data
       setWeather(receivedWeather)
@@ -73,18 +72,3 @@ const Main = (props) => {
 
 
 export default Main
-
-
-
-
-  // functional constructor
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     email: null,
-  //     location: "Seattle",
-  //     showWeatherCarousel: false,
-  //     weather: null,
-  //     showGameModal: false
-  //   }
-  // }

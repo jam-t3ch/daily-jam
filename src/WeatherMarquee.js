@@ -9,7 +9,6 @@ const WeatherMarquee = (props) => {
     <>
       {
         props.weather && props.marqueeDisplay
-
           ?
 
           // DISPLAYING OUR CURRENT CITY WEATHER ON CAROUSEL ONCE WE HAVE WEATHER IN STATE ON APP.JS

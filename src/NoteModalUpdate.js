@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Container, Button} from 'react-bootstrap';
+import { Form, Container, Button } from 'react-bootstrap';
 
 class NoteModalUpdate extends React.Component {
 
@@ -16,15 +16,15 @@ class NoteModalUpdate extends React.Component {
     this.props.onHide();
   }
 
-  render () {
+  render() {
     return (
       <Container>
         <Form onSubmit={this.handleNoteUpdate}>
           <Form.Group>
-            <Form.Control name="name" type="text" placeholder={this.props.note.name}/>
+            <Form.Control name="name" type="text" placeholder={this.props.note.name} />
           </Form.Group>
           <Form.Group>
-            <Form.Control name="description" type="text" placeholder={this.props.note.description}/>
+            <Form.Control name="description" type="text" placeholder={this.props.note.description} />
           </Form.Group>
           <Button type="submit">Update Note</Button>
         </Form>
