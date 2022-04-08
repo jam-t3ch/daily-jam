@@ -22,6 +22,7 @@ const Main = (props) => {
       setLocation(city)
       props.locationObtained(city)
       props.weatherObtained(receivedWeather)
+      props.getNews(city);
     } catch {
       console.log("didn't work")
     }

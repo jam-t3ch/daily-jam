@@ -100,7 +100,7 @@ header img {
     .menu {
       position: absolute;
       top: 0;
-      margin-top: 15vh;
+      margin-top: 25vh;
       left: 0;
       flex-direction: column;
       width: 100%;
@@ -109,7 +109,7 @@ header img {
       
     }
     #menu-toggle ~ .menu li {
-      
+      z-index: -50;
       height: 0;
       margin: 0;
       padding: 0;
@@ -158,4 +158,10 @@ header img {
     background-color: #413142;
     padding-top: 3vh;
     padding-bottom: 3vh;
+}
+
+  #noNews {
+    text-align: center;
+    font-size: 1em;
+    color:aliceblue;
   }

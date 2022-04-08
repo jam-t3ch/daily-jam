@@ -1,0 +1,20 @@
+.news-carousel {
+  width: 100%;
+  font-size: 12px;
+  color:aliceblue;
+  height: max-content;
+}
+
+.news-carousel p{
+  margin-top: 1vh;
+line-height: 1em;
+text-align: center;
+height: max-content;
+}
+
+.carousel-indicators,
+.carousel-indicators li {
+  cursor: default;
+  pointer-events: none;
+  display: none;
+}

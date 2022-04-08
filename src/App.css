@@ -47,3 +47,176 @@ body {
     opacity: 1;
   }
 }
+
+.inline-div {
+  display:inline;
+  margin-bottom: 10px;
+}
+
+.dayofweek-list {
+  display: inline;
+  font-size: 17px;
+  font-weight: 900;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-bottom: 10px;
+}
+
+.weather-list-group {
+  padding: 0px;
+  padding-left: 5px;
+}
+
+.high-temp-span {
+  font-size: 20px;
+  font-weight: 900;
+  margin-left: 10px;
+}
+
+.low-temp-span {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.list-condition {
+  font-size: 12px;
+}
+
+.test-img {
+  display:inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.inline-marquee-block {
+  display:inline-block;
+}
+
+.marquee-weather-icon {
+  display:inline-block;
+  width:24px;
+  height:24px;
+}
+
+
+.Broken {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Broken.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Clear {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Clear.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Few {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Few.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Heavy {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Heavy.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Light {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Light.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Mix {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Mix.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Moderate {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Moderate.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Overcast {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Overcast.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Scattered {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Scattered.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Thunderstorm {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Thunderstorm.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
