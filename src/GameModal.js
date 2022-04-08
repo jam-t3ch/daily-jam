@@ -12,9 +12,9 @@ const GameModal = (props) => {
   const [showGame, setShowGame] = useState(false)
   const [guess, setGuess] = useState('')
   const [correct, setCorrect] = useState(false)
-  const [wordArr, setWordArr] = useState(['W','O','D','S'])
-  const centerLetter = 'R'
-  const wordList = ['DOR','ROD','ROO','ROW','DOOR','ODOR','RODS','ROOD','ROOS','ROWS','WORD','DOORS','DROSS','ODORS','ROODS','SWORD','WORDS','SORDOR','SORROW', 'SWORDS','SORDORS','SORROWS']
+  const [wordArr, setWordArr] = useState(['J','A','E','D'])
+  const centerLetter = 'M'
+  const wordList = ['DAM','JAM','MAD','MAM','DAME','DEEM', 'MADE','MAMA','MEAD','MEED','MEME','ADEEM','EDEMA','MADAM','MAMMEE','MAMMA','DAMMED','DEEMED','JAMMED','MADAME','MADDED','ADEEMED','EDAMAME']
   const [displayList, setDisplayList] = useState([])
   const progress = Math.floor(100 * ((displayList.length)/(wordList.length)))
   console.log(progress);
@@ -34,6 +34,13 @@ const GameModal = (props) => {
     } else if(guess === '') {
       setCorrect(false)
       setAccuracyMsg('Click or type a word.')
+    } else if(guess.includes('JAM') && wordList.includes(guess)) {
+      setDisplayList([...displayList,guess])
+      setCorrect(true)
+      setAccuracyMsg('WOOO WE LOVE JAM!!!!')
+    } else if(guess.includes('JAM')) {
+      setCorrect(false)
+      setAccuracyMsg('Nope. LOVE your JamSpirit™ tho!')
     } else if(wordList.includes(guess)) {
       setDisplayList([...displayList,guess])
       setCorrect(true)
