@@ -157,6 +157,7 @@ const App = () => {
 
       <NotesForm
         postNote={(something) => postNote(something)}
+        user={user}
       />
 
 
