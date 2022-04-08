@@ -1,38 +1,226 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+body {
+  background-image: url(../public/images/jammydrip.jpg);
+  background-size: cover;
+  display:flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.game{
+  background-image: url(../public/images/blackberries.jpg);
+  height:100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.game-body {
+  background-color: white;
+  border-radius: 30px;
+  width:fit-content;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 30px;
+}
+
+.hidden-l {
+  color:white;
+}
+
+.blinking-cursor {
+  height: 30px;
+  margin-bottom: -4px;
+  width: 3px;
+  background: purple;
+  opacity: 0;
+  display: inline-block;
+  animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
   }
+}
+
+.inline-div {
+  display:inline;
+  margin-bottom: 10px;
+}
+
+.dayofweek-list {
+  display: inline;
+  font-size: 17px;
+  font-weight: 900;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-bottom: 10px;
+}
+
+.weather-list-group {
+  padding: 0px;
+  padding-left: 5px;
+}
+
+.high-temp-span {
+  font-size: 20px;
+  font-weight: 900;
+  margin-left: 10px;
+}
+
+.low-temp-span {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.list-condition {
+  font-size: 12px;
+}
+
+.test-img {
+  display:inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.inline-marquee-block {
+  display:inline-block;
+}
+
+.marquee-weather-icon {
+  display:inline-block;
+  width:24px;
+  height:24px;
+}
+
+
+.Broken {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Broken.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Clear {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Clear.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Few {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Few.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Heavy {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Heavy.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Light {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Light.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Mix {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Mix.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Moderate {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Moderate.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Overcast {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Overcast.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Scattered {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Scattered.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Thunderstorm {
+  margin-left:90px;
+  margin-right:10px;
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url(./img/Thunderstorm.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.spread {
+  font-weight: 900;
+  font-size: 20px;
 }

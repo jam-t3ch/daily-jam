@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
+
+.display-word-list {
+  list-style-image: url(../public/list-item.png);
+}
+
+.tooltip {
+  max-width:300px;
+}
+
+.instructions-button {
+  margin-left: 210px;
+  margin-bottom: 5px;
+}
+
+.game-greeting-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered-image {
+  height:200px;
+}
+
+.word-jam-name {
+  font-family: 'Rubik Wet Paint', cursive;
+  font-size: 25px;
+  position: absolute;
+  top: 55%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+}
+
+.gameRowTwo.row {
+  justify-content:center;
+  padding-left: 28px;
+  padding-right:50px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.gameRowThree.row {
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+
+.gameRowFour.row {
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+  width:50px;
+}

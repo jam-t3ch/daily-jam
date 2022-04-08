@@ -1,0 +1,37 @@
+.user-notes-display {
+  background-image: url(../public/images/pink-notepad.png);
+  height:fit-content;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-repeat: repeat-y;
+  background-size: cover;
+  list-style-image: url(../public/list-item.png);
+  justify-content: center;
+}
+
+li {
+  margin-left: 6vw;
+  font-size:small;
+}
+
+.update-button {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left:2px;
+  padding-right:2px;
+  font-size:small;
+  margin-left: 5px;
+}
+
+.delete-button {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left:2px;
+  padding-right:2px;
+  font-size:small;
+  margin-left:5px;
+}
+
+.note-name {
+  font-size:medium;
+}

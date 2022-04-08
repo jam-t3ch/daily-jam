@@ -1,0 +1,78 @@
+
+
+.weathercard p{
+  text-align: center;
+  display: block;
+  margin: auto;
+  color: aliceblue;
+
+  
+}
+.weathercard{
+  background-image: url(../public/images/weatherbutton.png);
+  display: flex;
+  height:15vh;
+  width: 20vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  cursor: pointer;
+  margin:auto;
+  }
+  .weathercard:hover {
+    cursor:pointer;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(128, 233, 247, 0.67);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(128, 233, 247, 0.67);
+  box-shadow:         0px 0px 30px 0px rgba(128, 233, 247, 0.67);
+  }
+
+.modal-title{
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 1.4em;
+}
+
+.feature-card p{
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.submit-weather-button{
+  background-image: url(../public/images/weatherbutton.png);
+  background-size: cover;
+  font-size: 2em;
+  width:40%;
+  height:auto;
+  border-radius: 25px;
+  margin: 1vh auto 1vh 1vw;
+  display:flex;
+  border-color: blanchedalmond;
+  text-align: center;
+  padding-left: 15px;
+}
+
+.close-button{
+  background-image: url(../public/images/weatherbutton.png);
+  background-size: cover;
+  font-size: 2em;
+  width:40%;
+  height:auto;
+  border-radius: 25px;
+  margin: 1vh 1vw 1vh auto;
+  display:flex;
+  border-color: blanchedalmond;
+  text-align: center;
+  padding-left:27px;
+}
+
+
+.lower-modal-buttons{
+  display:flex;
+}
+
