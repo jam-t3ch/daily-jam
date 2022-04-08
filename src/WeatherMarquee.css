@@ -1,3 +1,4 @@
+
 .weathercarousel {
   width: 100%;
   font-size: 12px;
@@ -5,7 +6,7 @@
   margin-bottom: 2vh;
 }
 
-.carousel-item p{
+.weather-marquee p{
   margin-top: 1vh;
 line-height: 0em;
 text-align: center;

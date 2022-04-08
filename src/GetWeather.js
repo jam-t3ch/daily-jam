@@ -29,12 +29,15 @@ const GetWeather = (props) => {
     // this.closeCityModal();
   }
 
+  // calling Seattle weather from state on page load
+  window.onload = handleCitySubmit;
 
   return (
     <>
       <Modal show={showModal} onHide={closeWeatherModal}>
         <Modal.Header closeButton onHide={closeWeatherModal}>
-          <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
+          <Modal.Title className="modal-title">🌪️ {props.currentLocation} Local Weather 🌪️</Modal.Title>
+
 
           {/* <Button
                 variant="danger"
@@ -44,20 +47,21 @@ const GetWeather = (props) => {
         </Modal.Header>
 
         <Modal.Body>
-          {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
+
+
           {props.weather
             &&
-            <WeatherList
-              weather={props.weather}
-            />
+            <WeatherList weather={props.weather} />
           }
+
         </Modal.Body>
 
 
         <Modal.Footer>
           <Form onSubmit={handleCitySubmit}>
             {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
-            <Form.Group className="" controlId="formBasicCity">
+
+            <Form.Group className="yes" controlId="formBasicCity">
               <Form.Label>Enter Your City:</Form.Label>
               <Form.Control
                 type="text"
@@ -66,17 +70,23 @@ const GetWeather = (props) => {
               />
               <Form.Text className="text-muted"
               >
-                Please share your home city or some other location you're trying to jam at!
+
+                Please share some other location you're trying to jam at!
               </Form.Text>
             </Form.Group>
+            <div className="lower-modal-buttons">
+              <Button
+                variant="primary"
+                type='submit'
+                className="submit-weather-button"
+              >Go</Button>
 
-            <Button
-              variant="primary"
-              type='submit'
-            >
-              Go
-            </Button>
-
+              <Button
+                variant="secondary"
+                onClick={closeWeatherModal}
+                className="close-button"
+              >Close</Button>
+            </div>
           </Form>
         </Modal.Footer>
       </Modal>
@@ -89,6 +99,7 @@ const GetWeather = (props) => {
       >
         <p>Find Your Weather!</p>
       </Card.Body>
+
     </>
   )
 }

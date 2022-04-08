@@ -3,4 +3,11 @@
 }
 .about p {
   margin-top: 5vh;
+  height:max-content;
+  color: black;
+  overflow: auto;
+  height: max-content;
+  text-align: center;
+  margin: auto;
 }
+

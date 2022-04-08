@@ -31,18 +31,18 @@ const App = () => {
 
 
   const postNote = async (newNote) => {
-    console.log(newNote)
+    // console.log(newNote)
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
-      console.log(jwt)
+      // console.log(jwt)
       try {
         const config = {
           headers: { "Authorization": `Bearer ${jwt}` },
         };
         let url = `${API_SERVER}/notes`
         let createdNote = await axios.post(url, newNote, config);
-        console.log(createdNote.data);
+        // console.log(createdNote.data);
         setNotes([...notes, createdNote.data])
       } catch (error) {
         console.log('There is an error')
@@ -78,23 +78,32 @@ const App = () => {
   }
 
   const deleteNote = async (id) => {
-    try {
-      let url = `${API_SERVER}/notes/${id}`;
-      await axios.delete(url);
-      let updatedNotes = notes.filter(note => note._id !== id);
-      setNotes(updatedNotes);
-    } catch (error) {
-      console.log('There is an error')
+    // console.log(id);
+    if (isAuthenticated) {
+      const res = await getIdTokenClaims();
+      const jwt = res.__raw;
+      // console.log(jwt)
+      try {
+        const config = {
+          headers: { "Authorization": `Bearer ${jwt}` },
+        };
+        let url = `${API_SERVER}/notes/${id}`;
+        await axios.delete(url, config);
+        let updatedNotes = notes.filter(note => note._id !== id);
+        setNotes(updatedNotes);
+      } catch (error) {
+        console.log('There is an error')
+      }
     }
   }
 
 
   const putNote = async (noteToUpdate) => {
-    console.log(noteToUpdate);
+    // console.log(noteToUpdate);
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
-      console.log(jwt)
+      // console.log(jwt)
       try {
         const config = {
           headers: { "Authorization": `Bearer ${jwt}` },
@@ -113,6 +122,10 @@ const App = () => {
     }
   }
   getNotes();
+
+
+
+
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
   const locationObtained = (locationEntered) => {
@@ -136,15 +149,17 @@ const App = () => {
         postNote={(something) => postNote(something)}
       />
 
+
       {isAuthenticated
+
         ?
         <NotesDisplay
           notes={notes}
           deleteNote={(something) => deleteNote(something)}
           putNote={(something) => putNote(something)} />
         :
-        null
-      }
+        null}
+
       <Main
         locationObtained={(something) => locationObtained(something)}
         weatherObtained={(retrievedWeather) => weatherObtained(retrievedWeather)}
