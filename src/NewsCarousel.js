@@ -12,19 +12,19 @@ const NewsCarousel = (props) => {
         props.news
 
           ?
-          <Container style={{ width: '100%', height: 'max-content' }}>
-            <Carousel controls={false}>
-              {props.news.map((story, i) => (
+          <Container style={{ width: '100%', height: 'max-content' }} id="newsCarouselbox">
+              <Carousel controls={false}>
+                {props.news.map((story, i) => (
 
-                <Carousel.Item
-                  key={i}
-                  className="news-carousel"
-                >
-                  <p>{story.title}</p>
-                  <p>{story.description}</p>
-                </Carousel.Item>
-              ))}
-            </Carousel>
+                  <Carousel.Item
+                    key={i}
+                    className="news-carousel"
+                  >
+                    <p>{story.title}</p>
+                    <p>{story.description}</p>
+                  </Carousel.Item>
+                ))}
+              </Carousel>
           </Container>
 
           :
