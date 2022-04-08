@@ -18,6 +18,7 @@ const About = (props) => {
         <Accordion.Item eventKey="1">
           <Accordion.Header>Daily Jam</Accordion.Header>
           <Accordion.Body>
+
             Daily Jam is a multi-purpose application with different features loosely based around JAM puns. These will include entertaining and useful functionality using APIs with flexibility to add more features if desired. Currently a user can save memos so they don't spread their memory too thin. A user may also look up their local weather if they're trying to jam at their picnic in the park.
           </Accordion.Body>
         </Accordion.Item>

@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { Col, Card, Modal } from 'react-bootstrap'
+import { Col, Card, Modal, CardGroup } from 'react-bootstrap'
 import GetWeather from './GetWeather'
 import GameModal from './GameModal'
+import './Main.css'
 
 const SERVER = process.env.REACT_APP_SERVER
 
@@ -35,32 +36,30 @@ const Main = (props) => {
 
   return (
     <>
+    <CardGroup>
+    <div className='transparent'>
       <GetWeather
         handleCityWeather={(something)=>handleCityWeather(something)}
         currentLocation={location}
         weather={weather}
-      />
-
-      <Col
-        className="app-column"
-        xs={2} sm={2} md={3} lg={4} xl={4}>
-        <Card
+        />
+        </div>
+        <div className='transparent'>
+          <Card.Body
           className="app-card"
           style={{ width: '18rem' }}
           onClick={() => gameModal()}>
-          <Card.Body
-            className="app-card-body">
-            Word Jam
+          <p>Word Jam</p>
           </Card.Body>
-        </Card>
-      </Col>
+        </div>
+        </CardGroup>
 
       <Modal
       
-        fullscreen={true}
-        className="game-modal"
-        show={showGameModal}
-        onHide={() => onHide()}>
+      fullscreen={true}
+      className="game-modal"
+      show={showGameModal}
+      onHide={() => onHide()}>
         <Modal.Header closeButton>WORD JAM</Modal.Header>
         <Modal.Body
           className="game">

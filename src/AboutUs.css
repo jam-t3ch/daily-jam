@@ -1,4 +1,8 @@
 .about {
+  height: 20vh;
+}
+.about p {
+  margin-top: 5vh;
   height:max-content;
   color: black;
   overflow: auto;
@@ -6,3 +10,4 @@
   text-align: center;
   margin: auto;
 }
+

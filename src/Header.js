@@ -42,6 +42,7 @@ return (
       </div>
     </header>
 
+ <div id='weathermarqueebox'>
     {props.weather
       ?
       <WeatherMarquee
@@ -51,6 +52,7 @@ return (
       :
       <div id='noweather'>No Weather Data</div>
     }
+    </div>
     {props.news
       ?
       <NewsCarousel
@@ -61,6 +63,7 @@ return (
     }
   </>
 );
+
 }
 
 export default withAuth0(Header);

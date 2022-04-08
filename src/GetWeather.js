@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import WeatherList from './WeatherList';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form, Card } from 'react-bootstrap';
 import './GetWeather.css';
 
 const GetWeather = (props) => {
@@ -38,6 +38,7 @@ const GetWeather = (props) => {
         <Modal.Header closeButton onHide={closeWeatherModal}>
           <Modal.Title className="modal-title">{props.currentLocation} - 5 Day Forecast</Modal.Title>
 
+
           {/* <Button
                 variant="danger"
                 onClick={this.closeCityModal}>
@@ -46,6 +47,7 @@ const GetWeather = (props) => {
         </Modal.Header>
 
         <Modal.Body>
+
 
           {props.weather
             &&
@@ -58,6 +60,7 @@ const GetWeather = (props) => {
         <Modal.Footer>
           <Form onSubmit={handleCitySubmit}>
             {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
+
             <Form.Group className="yes" controlId="formBasicCity">
               <Form.Label>Enter Your City:</Form.Label>
               <Form.Control
@@ -67,6 +70,7 @@ const GetWeather = (props) => {
               />
               <Form.Text className="text-muted"
               >
+
                 Please share some other location you're trying to jam at!
               </Form.Text>
             </Form.Group>
@@ -88,14 +92,13 @@ const GetWeather = (props) => {
       </Modal>
 
 
-
-      <Button
+      <Card.Body 
+      className='weathercard'
+        style={{ width: '18rem' }}
         onClick={openWeatherModal}
-        className="feature-card"
       >
         <p>Find Your Weather!</p>
-      </Button>
-
+      </Card.Body>
 
     </>
   )
