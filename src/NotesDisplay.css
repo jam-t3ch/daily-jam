@@ -11,5 +11,27 @@
 
 li {
   margin-left: 6vw;
+  font-size:small;
 }
 
+.update-button {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left:2px;
+  padding-right:2px;
+  font-size:small;
+  margin-left: 5px;
+}
+
+.delete-button {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left:2px;
+  padding-right:2px;
+  font-size:small;
+  margin-left:5px;
+}
+
+.note-name {
+  font-size:medium;
+}
