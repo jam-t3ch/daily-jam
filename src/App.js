@@ -16,6 +16,7 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
+  const [news, setNews] = useState(null)
   const { user, isAuthenticated, getIdTokenClaims } = useAuth0()
 
 
@@ -121,10 +122,18 @@ const App = () => {
       }
     }
   }
+
   getNotes();
 
-
-
+  const getNews = async (city) => {
+      try {
+        let news = await axios.get(`${API_SERVER}/news?search=${city}&locale=us`)
+        let useableNews = news.data;
+        setNews(useableNews);
+      } catch {
+        console.log('Didn\'t Work')
+      }
+    }
 
 
   // GETTING WEATHER INFO FROM MAIN.JS CHILD ******************
@@ -143,6 +152,7 @@ const App = () => {
       <Header
         weather={weather}
         location={location}
+        news={news}
       />
 
       <NotesForm
@@ -163,6 +173,7 @@ const App = () => {
       <Main
         locationObtained={(something) => locationObtained(something)}
         weatherObtained={(retrievedWeather) => weatherObtained(retrievedWeather)}
+        getNews={(city) => getNews(city)}
       />
 
 
