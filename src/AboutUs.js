@@ -21,8 +21,8 @@ const AboutUs = (props) => {
         </Carousel.Item>
         <Carousel.Item>
           <div className='about'>
-            <h2>Chris Yamas</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+            <h2>Christopher Yamas</h2>
+            <p>I'm a solutions-oriented developer with a commitment to psychologically safe team culture and a love for raspberry jam! Eager to help advance life-enriching technologies for a firm with net-positive environmental impact.</p>
           </div>
         </Carousel.Item>
         <Carousel.Item>
