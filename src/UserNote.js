@@ -29,7 +29,10 @@ class UserNote extends React.Component {
 
     return(
 
-      <li>{note.name} - {note.description}
+      <li>
+        <span
+          className="note-name">{note.name}</span> 
+        - {note.description}
         <Button
         variant="outline-info"
         className="update-button"
@@ -39,7 +42,7 @@ class UserNote extends React.Component {
         variant="outline-danger"
         className="delete-button"
         onClick={() => this.props.deleteNote(note._id)}
-        >Delete</Button>
+        >X</Button>
         <Modal show={this.state.noteUpdateModal} onHide={this.onHide}>
           <NoteModalUpdate
           note={this.props.note}
