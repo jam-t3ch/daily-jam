@@ -1,11 +1,11 @@
 import React from 'react';
-import {Carousel} from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import './AboutUs.css';
 
 const AboutUs = (props) => {
 
-    return (
-      <>
+  return (
+    <>
       <Carousel id='aboutcarousel'>
         <Carousel.Item>
           <div className='about'>
@@ -20,21 +20,20 @@ const AboutUs = (props) => {
           </div>
         </Carousel.Item>
         <Carousel.Item>
-        <div className='about'>
+          <div className='about'>
             <h2>Chris Yamas</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
           </div>
         </Carousel.Item>
         <Carousel.Item>
-        <div className='about'>
+          <div className='about'>
             <h2>Tai Egashira</h2>
-            <p>Favorite Jam: Marmalade</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</p>
+            <p>My daily jam! Marmalade! I'm a software developer who enjoys making user friendly applications and look forward to spreading my skills coast to coast like jam on toast. </p>
           </div>
         </Carousel.Item>
-</Carousel>
-      </>
-    )
-  }
+      </Carousel>
+    </>
+  )
+}
 
 export default AboutUs;
