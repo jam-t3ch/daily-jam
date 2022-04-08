@@ -36,7 +36,7 @@ const GetWeather = (props) => {
     <>
       <Modal show={showModal} onHide={closeWeatherModal}>
         <Modal.Header closeButton onHide={closeWeatherModal}>
-          <Modal.Title className="modal-title">🌪️ {props.currentLocation} Local Weather 🌪️</Modal.Title>
+          <Modal.Title className="modal-title">{props.currentLocation} - 5 Day Forecast</Modal.Title>
 
           {/* <Button
                 variant="danger"
@@ -75,7 +75,7 @@ const GetWeather = (props) => {
                 variant="primary"
                 type='submit'
                 className="submit-weather-button"
-              >Go</Button>
+              >Results</Button>
 
               <Button
                 variant="secondary"

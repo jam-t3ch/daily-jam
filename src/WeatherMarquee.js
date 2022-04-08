@@ -5,6 +5,8 @@ import './WeatherMarquee.css';
 
 const WeatherMarquee = (props) => {
   console.log('props.weather on marquee:', props)
+
+/*   let weatherIcon =  */
   return (
     <>
       {
@@ -19,11 +21,19 @@ const WeatherMarquee = (props) => {
               {props.weather.map(day => (
 
                 <Carousel.Item
-                  key={day.date}
+                  key={day.dayNum}
                   className="weather-marquee"
                 >
-                  <p>Date: {day.date}</p>
-                  <p>Weather: {day.description}</p>
+                  <div
+                  className={day.imgsrc}>
+                  </div>
+
+                  <div
+                  className="inline-marquee-block">
+                  <p>{day.dayofweek}, {day.month} {day.dayNum}</p>
+                  <p>{day.high}°/{day.low}°  {day.condition}</p>
+                  </div>
+
                 </Carousel.Item>
               ))}
             </Carousel>

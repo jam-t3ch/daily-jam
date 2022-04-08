@@ -22,7 +22,8 @@ class NotesDisplay extends React.Component {
       
       <>
       {this.props.notes ? (
-        <ul>
+        <ul
+        className="user-notes-display">
           {eachUserNote}
         </ul>
       ) : ('')}
