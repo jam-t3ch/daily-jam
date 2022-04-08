@@ -1,7 +1,8 @@
-.carousel-item {
+.weathercarousel {
   width: 100%;
   font-size: 12px;
-  color:aliceblue
+  color:aliceblue;
+  margin-bottom: 2vh;
 }
 
 .carousel-item p{
@@ -15,4 +16,8 @@ text-align: center;
   cursor: default;
   pointer-events: none;
   display: none;
+}
+
+#weatherdiv {
+  height: 15vh;
 }

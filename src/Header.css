@@ -28,7 +28,7 @@ header img {
     justify-content: space-between;
     background: linear-gradient(to left, #858788, #ada599);
     color: #FFF;
-    height: 10vh;
+    height: 15vh;
     padding: 1em;
   }
   
@@ -94,7 +94,6 @@ header img {
     transform: rotate(-405deg);
   }
   
-  @media (max-width: 2600px) {
     .menu-button-container {
       display: flex;
     }
@@ -116,6 +115,7 @@ header img {
       padding: 0;
       border: 0;
       transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: -100;
     }
     #menu-toggle:checked ~ .menu li {
       border: 1px solid #333;
@@ -146,10 +146,16 @@ header img {
     .menu > li:not(:last-child) {
       border-bottom: 1px solid #444;
     }
-  }
+  
 
   #noweather {
     text-align: center;
     font-size: 1em;
     color:aliceblue;
+  }
+
+  #weathermarqueebox {
+    background-color: #413142;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
   }

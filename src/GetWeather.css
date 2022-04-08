@@ -1,20 +1,30 @@
-.feature-card{
-  background-image: url(../public/images/weatherbutton.png);
-  background-size: cover;
-  font-size: 1em;
-  width:30vw;
-  height:auto;
-  border-radius: 15px;
-  margin: 1vh auto 1vh auto;
-  display:flex;
-  border-color: blanchedalmond;
-  text-align: center;
-}
 
-.feature-card p{
+.weathercard p{
   text-align: center;
   display: block;
   margin: auto;
+  color: aliceblue;
 
-
+  
 }
+.weathercard{
+  background-image: url(../public/images/weatherbutton.png);
+  display: flex;
+  height:15vh;
+  width: 20vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  cursor: pointer;
+  margin:auto;
+  }
+  .weathercard:hover {
+    cursor:pointer;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(128, 233, 247, 0.67);
+  -moz-box-shadow:    0px 0px 30px 0px rgba(128, 233, 247, 0.67);
+  box-shadow:         0px 0px 30px 0px rgba(128, 233, 247, 0.67);
+  }

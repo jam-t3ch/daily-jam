@@ -29,15 +29,17 @@ const Header = (props) => {
         </header>
 
         {/* WEATHER MARQUEE RENDERS ONCE WE HAVE WEATHER DATA IN STATE */}
+        <div id='weathermarqueebox'>
         {props.weather
           ?
           <WeatherMarquee
-            weather={props.weather}
+          weather={props.weather}
           />
           :
           <div id='noweather'>No Weather Data</div>
         }
-
+        </div>
+        
 
     </>
   );

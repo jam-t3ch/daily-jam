@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import WeatherList from './WeatherList';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form, Card } from 'react-bootstrap';
 import './GetWeather.css';
 
 const GetWeather = (props) => {
@@ -33,64 +33,62 @@ const GetWeather = (props) => {
   return (
     <>
       <Modal show={showModal} onHide={closeWeatherModal}>
-          <Modal.Header closeButton onHide={closeWeatherModal}>
-            <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
+        <Modal.Header closeButton onHide={closeWeatherModal}>
+          <Modal.Title>{props.currentLocation} Local Weather</Modal.Title>
 
-            {/* <Button
+          {/* <Button
                 variant="danger"
                 onClick={this.closeCityModal}>
                 X </Button> */}
 
-          </Modal.Header>
+        </Modal.Header>
 
-          <Modal.Body>
-            {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
-            {props.weather
-              &&
-              <WeatherList
-                weather={props.weather}
+        <Modal.Body>
+          {/* LIST OF WEATHER RENDERING ON MODAL VVVVVVVV */}
+          {props.weather
+            &&
+            <WeatherList
+              weather={props.weather}
+            />
+          }
+        </Modal.Body>
+
+
+        <Modal.Footer>
+          <Form onSubmit={handleCitySubmit}>
+            {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
+            <Form.Group className="" controlId="formBasicCity">
+              <Form.Label>Enter Your City:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Where we jammin'?"
+                onInput={handleCityInput}
               />
-            }
-          </Modal.Body>
-
-
-          <Modal.Footer>
-            <Form onSubmit={handleCitySubmit}>
-              {/* FORM TO GET CITY FROM USER RENDERED AFTER BUTTON BELOW IS CLICKED */}
-              <Form.Group className="" controlId="formBasicCity">
-                <Form.Label>Enter Your City:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Where we jammin'?"
-                  onInput={handleCityInput}
-                />
-                <Form.Text className="text-muted"
-                >
-                  Please share your home city or some other location you're trying to jam at!
-                </Form.Text>
-              </Form.Group>
-
-              <Button
-                variant="primary"
-                type='submit'
+              <Form.Text className="text-muted"
               >
+                Please share your home city or some other location you're trying to jam at!
+              </Form.Text>
+            </Form.Group>
+
+            <Button
+              variant="primary"
+              type='submit'
+            >
               Go
-              </Button>
+            </Button>
 
-            </Form>
-          </Modal.Footer>
-</Modal>
-      
+          </Form>
+        </Modal.Footer>
+      </Modal>
 
-        
-          <Button
-            onClick={openWeatherModal}
-            className="feature-card"
-          >
-            <p>Find Your Weather!</p>
-          </Button>
-      
-      
+
+      <Card.Body 
+      className='weathercard'
+        style={{ width: '18rem' }}
+        onClick={openWeatherModal}
+      >
+        <p>Find Your Weather!</p>
+      </Card.Body>
     </>
   )
 }
